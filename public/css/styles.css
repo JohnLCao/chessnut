@@ -1,5 +1,17 @@
+#logo {
+	width: 90%;
+	display: block;
+	margin: auto;
+}
+
+#about, #user {
+	font-size: 4vw;
+	margin-left: 30%;
+	margin-top: 30%;
+}
+
 #board {
-	width: 45%;
+	width: 40%;
 	margin: auto;
 	margin-top: 20px;
 }

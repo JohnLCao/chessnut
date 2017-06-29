@@ -1,7 +1,9 @@
-var cfg = {
-	draggable: true,
-	dropOffBoard: 'snapback',
-	position: 'start'
-};
+(function() {
+	var cfg = {
+		draggable: true,
+		dropOffBoard: 'snapback',
+		position: 'start'
+	};
 
-var board = ChessBoard('board', cfg);
+	var board = ChessBoard('board', cfg);
+})();

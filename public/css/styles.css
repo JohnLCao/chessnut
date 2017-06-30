@@ -1,18 +1,33 @@
 #logo {
-	width: 90%;
+	width: 85%;
 	display: block;
 	margin: auto;
 }
 
 #about, #user {
-	font-size: 4vw;
-	margin-left: 30%;
-	margin-top: 30%;
+	font-size: 3.5vw;
+	position: relative;
+	left: 30%;
+	top: 30%;
 }
 
 #board {
-	width: 40%;
+	width: 35%;
 	margin: auto;
 	margin-top: 20px;
 	margin-bottom: 20px;
+}
+
+body {
+	background: #D2691E;
+}
+
+header {
+	position: relative;
+	background: #fff;
+}
+
+header .row a {
+	position: relative;
+	top: 95px;
 }

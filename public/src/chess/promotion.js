@@ -12,7 +12,6 @@ $("#promote-to").selectable({
         var promote_to_html = selectable[index].innerHTML;
         var span = $('<div>' + promote_to_html + '</div>').find('span');
         promote_to = span[0].innerHTML;
-        console.log("inside selectable")
       }
       promotion_dialog.dialog('close');
       $('.ui-selectee').removeClass('ui-selected');
@@ -52,7 +51,6 @@ function promote(move_cfg, game, board){
     $('.promotion-piece-b').attr('src', getImgSrc('b', piece_color));
 
     //show the select piece to promote to dialog
-    console.log("inside promote");
     promotion_dialog.dialog({
       modal: true,
       height: 50,

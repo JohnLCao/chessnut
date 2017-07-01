@@ -1,6 +1,6 @@
 (function() {
 	var board;
-	var game = new Chess('8/3P3P/8/1k6/8/6K1/1p1p4/8 w - - 0 1');
+	var game = new Chess();
 	var promoting = false;
 
 	// do not pick up pieces if the game is over
@@ -66,8 +66,7 @@
 
 	var cfg = {
 	  draggable: true,
-	  // position: 'start',
-	  position: '8/3P3P/8/1k6/8/6K1/1p1p4/8 w - - 0 1',
+	  position: 'start',
 	  onDragStart: onDragStart,
 	  onDrop: onDrop,
 	  onSnapEnd: onSnapEnd

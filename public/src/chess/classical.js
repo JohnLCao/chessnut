@@ -1,6 +1,7 @@
 (function() {
 	var board;
-	var game = new Chess();
+	var game = new Chess('8/3P3P/8/1k6/8/6K1/1p1p4/8 w - - 0 1');
+	var promoting = false;
 
 	// do not pick up pieces if the game is over
 	// only pick up pieces for the side to move
@@ -14,21 +15,28 @@
 
 	var onDrop = function(source, target) {
 	  // see if the move is legal
-	  var move = game.move({
-	    from: source,
-	    to: target,
-	    promotion: 'q' // NOTE: always promote to a queen for example simplicity
-	  });
+		 var move_cfg = {
+		    from: source,
+		    to: target,
+		    promotion: null
+		 };
 
-	  // illegal move
-	 if (move === null) return 'snapback';
+		 if (promoting = isPromotion(move_cfg, game)){
+		   promote(move_cfg, game, board);
+		 } 
+		 else {
+			  // illegal move
+			 var move = game.move(move_cfg);
+			 if (move === null) return 'snapback';
 
-	  updateStatus();
+			 updateStatus();
+		}
 	};
 
 	// update the board position after the piece snap 
 	// for castling, en passant, pawn promotion
 	var onSnapEnd = function() {
+		if (promoting) return;
 	  board.position(game.fen());
 	};
 
@@ -58,7 +66,8 @@
 
 	var cfg = {
 	  draggable: true,
-	  position: 'start',
+	  // position: 'start',
+	  position: '8/3P3P/8/1k6/8/6K1/1p1p4/8 w - - 0 1',
 	  onDragStart: onDragStart,
 	  onDrop: onDrop,
 	  onSnapEnd: onSnapEnd

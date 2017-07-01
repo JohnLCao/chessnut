@@ -6,7 +6,9 @@
 	<title>Chessnut</title>
 	<link rel="icon" type="image/png" href="img/chessnut_favicon.png">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
 	<link rel="stylesheet" type="text/css" href="css/chessboard-0.3.0.min.css">
+	<link rel="stylesheet" type="text/css" href="css/promotion.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 <body>
@@ -27,10 +29,20 @@
 	</header>
 
 	<div id="board" class="responsive"></div>
+	
+	<div id="promotion-dialog">
+      <ol id="promote-to">
+        <li class="ui-state-default"><span class="piece-name">q</span><img class="promotion-piece-q promotion-piece" /></li>
+        <li class="ui-state-default"><span class="piece-name">r</span><img class="promotion-piece-r promotion-piece" /></li>
+        <li class="ui-state-default"><span class="piece-name">n</span><img class="promotion-piece-n promotion-piece" /></li>
+        <li class="ui-state-default"><span class="piece-name">b</span><img class="promotion-piece-b promotion-piece" /></li>
+      </ol>
+    </div>
 
 
 <!-- libraries -->
 <script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="lib/jquery-ui.js"></script>
 <script type="text/javascript" src="lib/bootstrap.min.js"></script>
 <script type="text/javascript" src="lib/angular.min.js"></script>
 <script type="text/javascript" src="lib/angular-ui-router.min.js"></script>
@@ -39,5 +51,7 @@
 
 <!-- chess scripts -->
 <script type="text/javascript" src="src/chess/classical.js"></script>
+<script type="text/javascript" src="src/chess/promotion.js"></script>
+
 </body>
 </html>

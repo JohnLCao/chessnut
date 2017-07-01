@@ -1,4 +1,5 @@
 (function() {
+	// var promotion_test_position = '8/3P3P/8/1k6/8/6K1/1p1p4/8 w - - 0 1';
 	var board;
 	var game = new Chess();
 	var promoting = false;
@@ -67,6 +68,7 @@
 	var cfg = {
 	  draggable: true,
 	  position: 'start',
+	  // position: promotion_test_position,
 	  onDragStart: onDragStart,
 	  onDrop: onDrop,
 	  onSnapEnd: onSnapEnd

@@ -4,13 +4,15 @@
 
 .ui-dialog {
   padding: 0 !important;
-  width: 184px !important;
+  width: 120px !important;
+  height: 120px !important;
   border: 0 !important;
 }
 
 .ui-dialog-content {
   padding: 0 !important;
-  width: 184px !important;
+  width: 120px !important;
+  height: 120px !important;
   border: 0 !important;
 }
 
@@ -35,15 +37,15 @@
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 184px;
-  height: 46px;
+  width: 120px;
+  height: 120px;
 }
 
 #promote-to li {
   margin: 0;
   padding: 0;
-  width: 46px;
-  height: 46px;
+  width: 60px;
+  height: 60px;
   cursor: pointer;
   float: left !important;
 }
@@ -61,8 +63,13 @@
 }
 
 .promotion-piece {
-  width: 46px;
-  height: 46px;
+  width: 60px;
+  height: 60px;
+  background: #F5F5F5;
+}
+
+.promotion-piece:hover {
+  background: #FFFF22;
 }
 
 .piece-name {

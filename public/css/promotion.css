@@ -72,6 +72,10 @@
   background: #FFFF22;
 }
 
+.promotion-piece:active {
+  background: #FECA40;
+}
+
 .piece-name {
   display: none;
 }

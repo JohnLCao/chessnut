@@ -12,13 +12,14 @@
 }
 
 .board {
-	width: 35%;
+	width: 90%;
 	margin: auto;
 	margin-top: 20px;
 	margin-bottom: 20px;
 }
 
 body {
+	position: relative;
 	background: #D2691E;
 }
 
@@ -30,4 +31,31 @@ header {
 header .row a {
 	position: relative;
 	top: 95px;
+}
+
+.container[ng-app="chessnut"] a {
+	position: relative;
+	top: 250px;
+}
+
+#left, #right {
+	position: relative;
+	font-size: 4vw;
+	color: black;
+}
+
+#left:hover, #right:hover {
+	color: gold;
+}
+
+#left:active, #right:active {
+	color: maroon;
+}
+
+#left {
+	left: 43%;
+}
+
+#right {
+	right: 19%;
 }

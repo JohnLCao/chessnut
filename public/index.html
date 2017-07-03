@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="css/promotion.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
-<body ng-app="chessnut">
+<body>
 	<header>
 		<div class="container">
 			<div class="row">
@@ -28,9 +28,18 @@
 		</div>
 	</header>
 
-	<classical-board></classical-board>
-
-    <promotion></promotion>
+	<div class="container" ng-app="chessnut">
+		<div class="row">
+			<a href="#" class="col-lg-1 col-lg-offset-2">
+				<span class="glyphicon glyphicon-chevron-left" id="left"></span>
+			</a>
+			<classical-board class="col-lg-6"></classical-board>
+   			<promotion></promotion>
+   			<a href="#" class="col-lg-1">
+				<span class="glyphicon glyphicon-chevron-right" id="right"></span>
+			</a>
+   		</div>
+    </div>
 
 
 <!-- libraries -->

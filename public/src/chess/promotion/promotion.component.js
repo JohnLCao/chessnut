@@ -4,7 +4,7 @@
 
 angular.module('chessnut')
 .component('promotion', {
-	templateUrl: 'src/chess/classical/templates/promotion.html',
+	templateUrl: 'src/chess/promotion/templates/promotion.html',
 	controller: 'PromotionController'
 });
 

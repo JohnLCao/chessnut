@@ -11,7 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="css/promotion.css">
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
-<body>
+<body ng-app="chessnut">
 	<header>
 		<div class="container">
 			<div class="row">
@@ -28,17 +28,9 @@
 		</div>
 	</header>
 
-	<div id="board" class="responsive"></div>
+	<classical-board></classical-board>
 
-	<div id="promotion-dialog">
-      <ol id="promote-to">
-        <li class="ui-state-default"><span class="piece-name">q</span><img class="promotion-piece-q promotion-piece" /></li>
-        <li class="ui-state-default"><span class="piece-name">r</span><img class="promotion-piece-r promotion-piece" /></li>
-        <br>
-        <li class="ui-state-default"><span class="piece-name">n</span><img class="promotion-piece-n promotion-piece" /></li>
-        <li class="ui-state-default"><span class="piece-name">b</span><img class="promotion-piece-b promotion-piece" /></li>
-      </ol>
-    </div>
+    <promotion></promotion>
 
 
 <!-- libraries -->
@@ -51,8 +43,14 @@
 <script type="text/javascript" src="lib/chessboard-0.3.0.min.js"></script>
 
 <!-- chess scripts -->
-<script type="text/javascript" src="src/chess/classical.js"></script>
-<script type="text/javascript" src="src/chess/promotion.js"></script>
+<script type="text/javascript" src="src/chess/chessnut.js"></script>
+	<!-- classical -->
+	<script type="text/javascript" src="src/chess/classical/classical.component.js"></script>
+	<script type="text/javascript" src="src/chess/classical/classical.controller.js"></script>
+	<script type="text/javascript" src="src/chess/classical/classical.game.service.js"></script>
+	<script type="text/javascript" src="src/chess/classical/promotion.component.js"></script>
+	<script type="text/javascript" src="src/chess/classical/promotion.controller.js"></script>
+	<script type="text/javascript" src="src/chess/classical/promotion.service.js"></script>
 
 </body>
 </html>

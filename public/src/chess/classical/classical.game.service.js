@@ -55,7 +55,11 @@ function ClassicalGameService(PromotionService){
 	  onSnapEnd: service.onSnapEnd
 	};
 
-	service.makeBoard = function(board_id){
+	service.makeBoard = function(board_id, custom_fen = null){		
+		if (custom_fen){
+			service.game = new Chess(custom_fen);
+			cfg.position = custom_fen;
+		} 
 		service.board = ChessBoard(board_id, cfg);
 		return service.board;
 	}

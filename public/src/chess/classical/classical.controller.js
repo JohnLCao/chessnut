@@ -8,7 +8,7 @@ angular.module('chessnut')
 ClassicalController.$inject = ['ClassicalGameService', '$document'];
 function ClassicalController(ClassicalGameService, $document){
 	var $ctrl = this;
-	$ctrl.name = 'john-chess';
+	$ctrl.name = 'classical';
 
 	$ctrl.initialize = function(){
 		$ctrl.game = ClassicalGameService.getGame();

@@ -59,3 +59,19 @@ header .row a {
 #right {
 	right: 19%;
 }
+
+.game-title {
+	text-align: center;
+	color: black;
+	font-weight: bold;
+}
+
+.description {
+	margin-top: 20px;
+	margin-left: -20%;
+	margin-right: -20%;
+	color: black;
+	font-weight: bold;
+	font-size: 16px;
+	text-align: center;
+}

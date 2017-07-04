@@ -59,7 +59,9 @@ function ClassicalGameService(PromotionService){
 		if (custom_fen){
 			service.game = new Chess(custom_fen);
 			cfg.position = custom_fen;
-		} 
+		} else {
+			cfg.position = 'start';
+		}
 		service.board = ChessBoard(board_id, cfg);
 		return service.board;
 	}

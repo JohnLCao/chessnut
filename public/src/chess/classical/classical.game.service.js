@@ -60,6 +60,7 @@ function ClassicalGameService(PromotionService){
 			service.game = new Chess(custom_fen);
 			cfg.position = custom_fen;
 		} else {
+			service.game = new Chess();
 			cfg.position = 'start';
 		}
 		service.board = ChessBoard(board_id, cfg);

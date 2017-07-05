@@ -75,3 +75,45 @@ header .row a {
 	font-size: 16px;
 	text-align: center;
 }
+
+.description-button {
+	width: 40%;
+	height: 50px;
+	position: relative;
+	left: 30%;
+	margin-top: 20px;
+	border: 0;
+	border-radius: 75px;
+	background: #EAEAEA;
+	text-decoration: none;
+	transition: background-color 0.7s ease;
+	font-size: 20px;
+	text-align: center;
+}
+
+.description-button:hover{
+	background: gold;
+	color: white;
+}
+
+.description-button:active, .description-button:focus{
+	outline: 0;
+}
+
+
+.btn {
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #3498db;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  text-decoration: none;
+}

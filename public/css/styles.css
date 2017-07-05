@@ -61,6 +61,8 @@ header .row a {
 }
 
 .game-title {
+	font-family: 'Heebo', sans-serif;
+	font-size: 40px;
 	text-align: center;
 	color: black;
 	font-weight: bold;
@@ -74,6 +76,7 @@ header .row a {
 	color: black;
 	font-weight: bold;
 	font-size: 16px;
+	font-family: 'Heebo', sans-serif;
 	text-align: center;
 }
 

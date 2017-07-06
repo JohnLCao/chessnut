@@ -95,11 +95,31 @@ header .row a {
 	text-align: center;
 }
 
-.description-button:hover{
+.description-button:hover, .play-button:hover{
 	background: gold;
 	color: white;
 }
 
-.description-button:active, .description-button:focus{
+.description-button:focus, .play-button:focus{
 	outline: 0;
+}
+
+.play-button {
+	width: 90%;
+	height: 50px;
+	position: relative;
+	left: 26px;
+	margin-top: 20px;
+	border: 0;
+	border-radius: 15px;
+	background: #EAEAEA;
+	text-decoration: none;
+	transition: background-color 0.5s ease;
+	font-size: 22px;
+	font-family: 'Heebo', sans-serif;
+	font-weight: bold;
+	text-align: center;
+}
+.play-button:active{
+	font-size: 20px;
 }

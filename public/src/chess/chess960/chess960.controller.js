@@ -5,30 +5,16 @@
 angular.module('chessnut')
 .controller('Chess960Controller', Chess960Controller);
 
-Chess960Controller.$inject = ['ClassicalGameService', '$document']; //as it turns out classical service can be reused
-function Chess960Controller(ClassicalGameService, $document){
+Chess960Controller.$inject = ['ClassicalGameService', '$document', 'MoveNavigationService']; //as it turns out classical service can be reused
+function Chess960Controller(ClassicalGameService, $document, MoveNavigationService){
 	var $ctrl = this;
 	$ctrl.name = 'chess960';
-
-	$ctrl.moveNavigate = function(isLeft){ 
-		ClassicalGameService.moveNavigate(isLeft);
-	};
 
 	$ctrl.initialize = function(){
 		var pos = generate960Position();
 		var game_fen = pos + "/pppppppp/8/8/8/8/PPPPPPPP/" + pos.toUpperCase() + " w - - 0 1"
 		ClassicalGameService.makeBoard($ctrl.name, game_fen);
-		$(document).on('keyup', function(e){
-			var left = 37;
-			var right  = 39;
-			var isLeft;
-
-			if (e.keyCode !== left && e.keyCode !== right) { 
-				return; 
-			}
-			isLeft = (e.keyCode === left) ? true : false;
-			$ctrl.moveNavigate(isLeft); 
-		});
+		$(document).on('keyup', MoveNavigationService.moveListener);
 	}
 
 	$document.ready($ctrl.initialize);

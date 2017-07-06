@@ -104,7 +104,17 @@ function ClassicalGameService(PromotionService){
 		else {
 			if (service.move_index < service.game.history().length-1){
 				var move = processMove(isLeft, service.move_index + 1);
-				service.board.move(move.move);
+
+				if (move.pos_aft_castle){
+					service.board.position(move.pos_aft_castle);
+				} else if(move.pos_aft_enpassant){
+					service.board.position(move.pos_aft_enpassant);
+				} else if(move.pos_aft_promotion){
+					service.board.position(move.pos_aft_promotion);
+				} else {
+					service.board.move(move.move);
+				}
+
 				service.move_index++;
 				if (service.move_index === service.game.history().length-1){
 					service.in_history = false;
@@ -118,11 +128,11 @@ function ClassicalGameService(PromotionService){
 		var move = isLeft ? (move_data.to + '-' + move_data.from) : (move_data.from + '-' + move_data.to);
 		console.log(move_data);
 		if (move_data.flags==='e'){
-			return processEnpassant(move_data);
+			return processEnpassant(isLeft, move_data);
 		};
 
-		if (isLeft && move_data.captured) {
-			return processCapture(move_data);
+		if (move_data.captured) {
+			return processCapture(isLeft, move_data);
 		};
 
 		if (move_data.flags==='k' || move_data.flags==='q'){
@@ -130,75 +140,134 @@ function ClassicalGameService(PromotionService){
 		};
 
 		if(move_data.flags==='np') { //assume not a capture promotion
-			return processPromotion(move_data);
+			return processPromotion(isLeft, move_data);
 		};
 
 		return {move: move};
 	}
 
-	function processCapture(move_data){
-		var captured_piece_color = move_data.color === 'w' ? 'b' : 'w';
-		var pos = service.board.position();
+	function processCapture(isLeft, move_data){
+		if (isLeft){
+			var captured_piece_color = move_data.color === 'w' ? 'b' : 'w';
+			var pos = service.board.position();
 
-		pos[move_data.to] = captured_piece_color + move_data.captured.toUpperCase();
-		pos[move_data.from] = move_data.color + move_data.piece.toUpperCase();
-
-		return {pos_pre_cap: pos};
+			pos[move_data.to] = captured_piece_color + move_data.captured.toUpperCase();
+			pos[move_data.from] = move_data.color + move_data.piece.toUpperCase(); //handles capture promotions :)
+			return {pos_pre_cap: pos};
+		}
+		else {
+			if (move_data.flags==='cp'){
+				return processPromotion(false, move_data);
+			}
+			return {move: move_data.from + '-' + move_data.to};
+		}
 	}
 
 	function processCastling(isLeft, move_data){
-		var pos = service.board.position();
-		delete pos[move_data.to];
-		pos[move_data.from] = move_data.color+'K';
+		if (isLeft){
+			var pos = service.board.position();
+			delete pos[move_data.to];
+			pos[move_data.from] = move_data.color+'K';
 
-		if (move_data.flags === 'k'){ // king side castle
-			switch(move_data.color){
-				case 'w':
-					delete pos.f1;
-					pos.h1 = 'wR';
-					break;
-				case 'b':
-					delete pos.f8;
-					pos.h8 = 'bR';
-					break;
-				default: 
-					console.log('this should never happen');
+			if (move_data.flags === 'k'){ // king side castle
+				switch(move_data.color){
+					case 'w':
+						delete pos.f1;
+						pos.h1 = 'wR';
+						break;
+					case 'b':
+						delete pos.f8;
+						pos.h8 = 'bR';
+						break;
+					default: 
+						console.log('this should never happen');
+				}
+			} else { //queenside castle
+				switch(move_data.color){
+					case 'w':
+						delete pos.d1;
+						pos.a1 = 'wR';
+						break;
+					case 'b':
+						delete pos.d8;
+						pos.a8 = 'bR';
+						break;
+					default: 
+						console.log('this should never happen');
+				}
 			}
-		} else { //queenside castle
-			switch(move_data.color){
-				case 'w':
-					delete pos.d1;
-					pos.a1 = 'wR';
-					break;
-				case 'b':
-					delete pos.d8;
-					pos.a8 = 'bR';
-					break;
-				default: 
-					console.log('this should never happen');
-			}
+			return {pos_pre_castle: pos};
 		}
-		return {pos_pre_castle: pos};
+		else {
+			var pos = service.board.position();
+			delete pos[move_data.from];
+			pos[move_data.to] = move_data.color + 'K';
+
+			if (move_data.flags === 'k'){ // king side castle
+				switch(move_data.color){
+					case 'w':
+						delete pos.h1;
+						pos.f1 = 'wR';
+						break;
+					case 'b':
+						delete pos.h8;
+						pos.f8 = 'bR';
+						break;
+					default: 
+						console.log('this should never happen');
+				}
+			} else { //queenside castle
+				switch(move_data.color){
+					case 'w':
+						delete pos.a1;
+						pos.d1 = 'wR';
+						break;
+					case 'b':
+						delete pos.a8;
+						pos.d8 = 'bR';
+						break;
+					default: 
+						console.log('this should never happen');
+				}
+			}
+			return {pos_aft_castle: pos};
+		}
 	}
 
-	function processEnpassant(move_data){
+	function processEnpassant(isLeft, move_data){
 		var captured_piece_color = move_data.color === 'w' ? 'b' : 'w';
 		var pos = service.board.position();
 		var captured_file = move_data.to[0];
 		var captured_rank = captured_piece_color === 'w' ? 4 : 5;
 
-		pos[captured_file + captured_rank] = captured_piece_color + move_data.captured.toUpperCase(); 
-		pos[move_data.from] = move_data.color + move_data.piece.toUpperCase();
-		delete pos[move_data.to];
+		if (isLeft){
+			pos[captured_file + captured_rank] = captured_piece_color + move_data.captured.toUpperCase(); 
+			pos[move_data.from] = move_data.color + 'P';
+			delete pos[move_data.to];
 
-		return {pos_pre_enpassant: pos};
+			return {pos_pre_enpassant: pos};
+		}
+		else {
+			delete pos[move_data.from];
+			delete pos[captured_file + captured_rank];
+			pos[move_data.to] = move_data.color + 'P';
+			return {pos_aft_enpassant: pos};
+		}
 	}
 
-	function processPromotion(move_data){
-		var pos = service.board.position();
-		delete pos[move_data.to];
-		pos[move_data.from] = move_data.color + 'P';
-		return {pos_pre_promotion: pos};
+	function processPromotion(isLeft, move_data){
+		if (isLeft){
+			var pos = service.board.position();
+			delete pos[move_data.to];
+			pos[move_data.from] = move_data.color + 'P';
+			return {pos_pre_promotion: pos};
+		}
+		else {
+			var pos = service.board.position();
+			delete pos[move_data.from];
+			pos[move_data.to] = move_data.color + move_data.promotion.toUpperCase();
+			return {pos_aft_promotion: pos};
+		}
 	}
 };
 

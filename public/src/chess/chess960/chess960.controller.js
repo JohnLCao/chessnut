@@ -5,15 +5,21 @@
 angular.module('chessnut')
 .controller('Chess960Controller', Chess960Controller);
 
-Chess960Controller.$inject = ['ClassicalGameService', '$document', 'MoveNavigationService']; //as it turns out classical service can be reused
-function Chess960Controller(ClassicalGameService, $document, MoveNavigationService){
+Chess960Controller.$inject = ['ClassicalGameService', '$document', 'MoveNavigationService', '$scope']; //as it turns out classical service can be reused
+function Chess960Controller(ClassicalGameService, $document, MoveNavigationService, $scope){
 	var $ctrl = this;
 	$ctrl.name = 'chess960';
 
-	$ctrl.initialize = function(){
+	$ctrl.initBoard = function(event, data){
 		var pos = generate960Position();
 		var game_fen = pos + "/pppppppp/8/8/8/8/PPPPPPPP/" + pos.toUpperCase() + " w - - 0 1"
 		ClassicalGameService.makeBoard($ctrl.name, game_fen);
+	}
+
+	$scope.$on('chess960:new_board', $ctrl.initBoard);
+
+	$ctrl.initialize = function(){
+		$ctrl.initBoard();
 		$(document).on('keyup', MoveNavigationService.moveListener);
 	}
 
@@ -24,6 +30,7 @@ function Chess960Controller(ClassicalGameService, $document, MoveNavigationServi
 	}
 
 	function generate960Position(){ 
+		// console.log('generated random position!');
 		var dark_bishop, light_bishop, queen, knight1, knight2;
 		var isKing = false;
 		var position = new Array(8);

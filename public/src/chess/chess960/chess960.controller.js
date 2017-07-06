@@ -10,13 +10,32 @@ function Chess960Controller(ClassicalGameService, $document){
 	var $ctrl = this;
 	$ctrl.name = 'chess960';
 
+	$ctrl.moveNavigate = function(isLeft){ 
+		ClassicalGameService.moveNavigate(isLeft);
+	};
+
 	$ctrl.initialize = function(){
 		var pos = generate960Position();
 		var game_fen = pos + "/pppppppp/8/8/8/8/PPPPPPPP/" + pos.toUpperCase() + " w - - 0 1"
 		ClassicalGameService.makeBoard($ctrl.name, game_fen);
+		$(document).on('keyup', function(e){
+			var left = 37;
+			var right  = 39;
+			var isLeft;
+
+			if (e.keyCode !== left && e.keyCode !== right) { 
+				return; 
+			}
+			isLeft = (e.keyCode === left) ? true : false;
+			$ctrl.moveNavigate(isLeft); 
+		});
 	}
 
 	$document.ready($ctrl.initialize);
+
+	$ctrl.$onDestroy = function(){
+		$(document).off();
+	}
 
 	function generate960Position(){ 
 		var dark_bishop, light_bishop, queen, knight1, knight2;

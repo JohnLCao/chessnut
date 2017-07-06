@@ -17,7 +17,7 @@ function ClassicalController(ClassicalGameService, $document){
 	$ctrl.initialize = function(){
 		$ctrl.game = ClassicalGameService.getGame();
 		$ctrl.board = ClassicalGameService.makeBoard($ctrl.name);
-		$(document).bind('keyup', function(e){
+		$(document).on('keyup', function(e){
 			var left = 37;
 			var right  = 39;
 			var isLeft;
@@ -32,6 +32,9 @@ function ClassicalController(ClassicalGameService, $document){
 
 	$document.ready($ctrl.initialize);
 
+	$ctrl.$onDestroy = function(){
+		$(document).off();
+	}
 	
 };
 

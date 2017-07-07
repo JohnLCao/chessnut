@@ -5,7 +5,8 @@
 angular.module('chessnut')
 .service('PromotionService', PromotionService);
 
-function PromotionService(){
+PromotionService.$inject = ['$rootScope']
+function PromotionService($rootScope){
 	var promotion = this;
 	promotion.promote_to = 'q'; //default queen promotion
 
@@ -73,6 +74,9 @@ function PromotionService(){
 	      promotion.promotion_dialog.dialog('close');
 	      $('.ui-selectee').removeClass('ui-selected');
 	      promotion.board.position(promotion.game.fen(), false);
+	      $rootScope.$broadcast('game:moving_side', {
+	      	color: promotion.game.turn()
+	      });
 	    });
 	};
 

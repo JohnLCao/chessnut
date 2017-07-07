@@ -5,19 +5,21 @@
 angular.module('chessnut')
 .service('GameService', GameService);
 
-GameService.$inject = ['PromotionService'];
-function GameService(PromotionService){
+GameService.$inject = ['PromotionService', '$rootScope'];
+function GameService(PromotionService, $rootScope){
 	var service = this;
 	// var promotion_test_position = '8/3P3P/8/1k6/8/6K1/1p1p4/8 w - - 0 1';
 	service.game = new Chess();
 	service.promoting = false;
 	service.in_history = false;
 	service.move_index = -1;
+	service.timeOut = false; //only for blitz
 
 	// do not pick up pieces if the game is over or viewing history
 	// only pick up pieces for the side to move
 	service.onDragStart = function(source, piece, position, orientation) {
 	  if ( service.in_history ||
+	  	   service.timeOut ||
 	  	   service.game.game_over() === true ||
 	      (service.game.turn() === 'w' && piece.search(/^b/) !== -1) ||
 	      (service.game.turn() === 'b' && piece.search(/^w/) !== -1)) {
@@ -53,6 +55,9 @@ function GameService(PromotionService){
 	service.onSnapEnd = function() {
 		if (service.promoting) return;
 	  service.board.position(service.game.fen());
+	  $rootScope.$broadcast('game:moving_side', {
+	  	color: service.game.turn()
+	  });
 	};
 
 	var cfg = {
@@ -73,6 +78,7 @@ function GameService(PromotionService){
 			cfg.position = 'start';
 		}
 		service.board = ChessBoard(board_id, cfg);
+		service.timeOut = false;
 		return service.board;
 	}
 

@@ -5,7 +5,8 @@
 angular.module('chessnut')
 .service('LosingChessGameService', LosingChessGameService);
 
-function LosingChessGameService(){
+LosingChessGameService.$inject = ['PromotionService'];
+function LosingChessGameService(PromotionService){
 	var service = this;
 };
 

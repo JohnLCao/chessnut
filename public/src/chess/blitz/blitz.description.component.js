@@ -3,12 +3,12 @@
 'use strict';
 
 angular.module('chessnut')
-.component('losingChessDescription', {
-	templateUrl: 'src/chess/losingChess/templates/losing.description.html',
+.component('blitzDescription', {
+	templateUrl: 'src/chess/blitz/templates/blitz.description.html',
 	controller: 'DescriptionController',
 	bindings: {
 		arrow: '<'
 	}
 })
 
-})()//IIFE
+})();//IIFE

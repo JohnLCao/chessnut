@@ -22,6 +22,10 @@ function RouteConfig($stateProvider, $urlRouterProvider){
 			url: '/losing',
 			templateUrl: 'src/chess/routes/templates/losingChess.html'
 		})
+		.state('blitz', {
+			url: '/blitz',
+			templateUrl: 'src/chess/routes/templates/blitz.html'
+		})
 };
 
 })(); //IIFE

@@ -1,2 +1,3 @@
-<div id="whiteTime" class="time">{{$ctrl.whiteTimeDisplay}}</div>
-<div id="blackTime" class="time">{{$ctrl.blackTimeDisplay}}</div>
+<div id="{{$ctrl.upperColor}}Time" class="time">{{$ctrl[$ctrl.upperColor + "TimeDisplay"]}}</div>
+<hr style="border-color:{{$ctrl.movingSideColor}}">
+<div id="{{$ctrl.lowerColor}}Time" class="time">{{$ctrl[$ctrl.lowerColor + "TimeDisplay"]}}</div>

@@ -26,14 +26,24 @@ function ChessClockController($interval, $scope, $rootScope){
 	$ctrl.whiteTimeDisplay = initialDisplay;
 	$ctrl.blackTimeDisplay = initialDisplay;
 	$ctrl.movingSide = null;
+	$ctrl.movingSideColor = 'white';
+	$ctrl.lowerColor = 'white';
+	$ctrl.upperColor = 'black';
+
+	$scope.$on('orientation:change_color', function(event, data){
+		var temp = $ctrl.upperColor;
+		$ctrl.upperColor = $ctrl.lowerColor;
+		$ctrl.lowerColor = temp;
+	});
 
 	$scope.$on('game:moving_side', function(event, data){
-		$ctrl.moving_side = data.color;
+		$ctrl.movingSide = data.color;
+		$ctrl.movingSideColor = (data.color === 'w') ? 'white' : 'black';
 	})
 
 	$ctrl.chessclock = $interval(function(){
-		if ($ctrl.moving_side){
-			switch($ctrl.moving_side){
+		if ($ctrl.movingSide){
+			switch($ctrl.movingSide){
 				case 'w':
 					whiteTime--;
 					$ctrl.whiteTimeDisplay = $ctrl.formatTime(whiteTime);

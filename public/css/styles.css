@@ -147,3 +147,23 @@ header .row a {
 .color-button:focus{
 	outline: 0;
 }
+
+.clock{
+	position: relative;
+	top: 50px;
+	left: 15px;
+}
+
+.time{
+	font-family: 'Heebo', sans-serif;
+	font-weight: bold;
+	font-size: 40px;
+}
+
+#whiteTime{
+	color: white;
+}
+
+#blackTime{
+	color: black;
+}

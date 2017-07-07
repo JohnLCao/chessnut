@@ -5,8 +5,8 @@
 angular.module('chessnut')
 .controller('ClassicalController', ClassicalController);
 
-ClassicalController.$inject = ['ClassicalGameService', '$document', 'MoveNavigationService'];
-function ClassicalController(ClassicalGameService, $document, MoveNavigationService){
+ClassicalController.$inject = ['ClassicalGameService', '$document', 'MoveNavigationService', '$scope'];
+function ClassicalController(ClassicalGameService, $document, MoveNavigationService, $scope){
 	var $ctrl = this;
 	$ctrl.name = 'classical';
 
@@ -22,6 +22,9 @@ function ClassicalController(ClassicalGameService, $document, MoveNavigationServ
 		$(document).off();
 	}
 	
+	$scope.$on('orientation:change_color', function(event, data){
+		$ctrl.board.flip();
+	});
 };
 
 })()//IIFE

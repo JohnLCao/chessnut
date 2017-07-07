@@ -123,3 +123,27 @@ header .row a {
 .panel-button:active{
 	font-size: 20px;
 }
+
+.orientation{
+	font-family: 'Heebo', sans-serif;
+	font-weight: bold;
+	font-size: 22px;
+	position: relative;
+	top: -5px;
+	left: 15px;
+}
+
+.color-button{
+	width: 36px;
+	height: 36px;
+	position: relative;
+	left: 20px;
+	top: 9px;
+	border: 0;
+	border-radius: 20px;
+	background: white;
+}
+
+.color-button:focus{
+	outline: 0;
+}

@@ -13,10 +13,8 @@ function Chess960Controller(ClassicalGameService, $document, MoveNavigationServi
 	$ctrl.initBoard = function(event, data){
 		var pos = generate960Position();
 		var game_fen = pos + "/pppppppp/8/8/8/8/PPPPPPPP/" + pos.toUpperCase() + " w - - 0 1"
-		ClassicalGameService.makeBoard($ctrl.name, game_fen);
+		$ctrl.board = ClassicalGameService.makeBoard($ctrl.name, game_fen);
 	}
-
-	$scope.$on('chess960:new_board', $ctrl.initBoard);
 
 	$ctrl.initialize = function(){
 		$ctrl.initBoard();
@@ -28,6 +26,12 @@ function Chess960Controller(ClassicalGameService, $document, MoveNavigationServi
 	$ctrl.$onDestroy = function(){
 		$(document).off();
 	}
+
+	$scope.$on('chess960:new_board', $ctrl.initBoard);
+
+	$scope.$on('orientation:change_color', function(event, data){
+		$ctrl.board.flip();
+	});
 
 	function generate960Position(){ 
 		// console.log('generated random position!');

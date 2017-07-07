@@ -5,14 +5,14 @@
 angular.module('chessnut')
 .controller('ClassicalController', ClassicalController);
 
-ClassicalController.$inject = ['ClassicalGameService', '$document', 'MoveNavigationService', '$scope'];
-function ClassicalController(ClassicalGameService, $document, MoveNavigationService, $scope){
+ClassicalController.$inject = ['GameService', '$document', 'MoveNavigationService', '$scope'];
+function ClassicalController(GameService, $document, MoveNavigationService, $scope){
 	var $ctrl = this;
 	$ctrl.name = 'classical';
 
 	$ctrl.initialize = function(){
-		$ctrl.game = ClassicalGameService.getGame();
-		$ctrl.board = ClassicalGameService.makeBoard($ctrl.name);
+		$ctrl.game = GameService.getGame();
+		$ctrl.board = GameService.makeBoard($ctrl.name);
 		$(document).on('keyup', MoveNavigationService.moveListener);
 	};
 

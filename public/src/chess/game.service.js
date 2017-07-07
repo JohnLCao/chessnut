@@ -3,10 +3,10 @@
 'use strict';
 
 angular.module('chessnut')
-.service('ClassicalGameService', ClassicalGameService);
+.service('GameService', GameService);
 
-ClassicalGameService.$inject = ['PromotionService'];
-function ClassicalGameService(PromotionService){
+GameService.$inject = ['PromotionService'];
+function GameService(PromotionService){
 	var service = this;
 	// var promotion_test_position = '8/3P3P/8/1k6/8/6K1/1p1p4/8 w - - 0 1';
 	service.game = new Chess();
@@ -126,7 +126,7 @@ function ClassicalGameService(PromotionService){
 	function processMove(isLeft, index){
 		var move_data = service.game.history({verbose:true})[index];
 		var move = isLeft ? (move_data.to + '-' + move_data.from) : (move_data.from + '-' + move_data.to);
-		console.log(move_data);
+		// console.log(move_data);
 		if (move_data.flags==='e'){
 			return processEnpassant(isLeft, move_data);
 		};

@@ -5,15 +5,15 @@
 angular.module('chessnut')
 .controller('Chess960Controller', Chess960Controller);
 
-Chess960Controller.$inject = ['ClassicalGameService', '$document', 'MoveNavigationService', '$scope']; //as it turns out classical service can be reused
-function Chess960Controller(ClassicalGameService, $document, MoveNavigationService, $scope){
+Chess960Controller.$inject = ['GameService', '$document', 'MoveNavigationService', '$scope']; //as it turns out classical service can be reused
+function Chess960Controller(GameService, $document, MoveNavigationService, $scope){
 	var $ctrl = this;
 	$ctrl.name = 'chess960';
 
 	$ctrl.initBoard = function(event, data){
 		var pos = generate960Position();
 		var game_fen = pos + "/pppppppp/8/8/8/8/PPPPPPPP/" + pos.toUpperCase() + " w - - 0 1"
-		$ctrl.board = ClassicalGameService.makeBoard($ctrl.name, game_fen);
+		$ctrl.board = GameService.makeBoard($ctrl.name, game_fen);
 	}
 
 	$ctrl.initialize = function(){

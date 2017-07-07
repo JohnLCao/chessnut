@@ -5,8 +5,8 @@
 angular.module('chessnut')
 .service('MoveNavigationService', MoveNavigationService);
 
-MoveNavigationService.$inject = ['ClassicalGameService'];
-function MoveNavigationService(ClassicalGameService){
+MoveNavigationService.$inject = ['GameService'];
+function MoveNavigationService(GameService){
 	var service = this;
 
 	service.moveListener = function(e){
@@ -22,7 +22,7 @@ function MoveNavigationService(ClassicalGameService){
 	};
 
 	service.moveNavigate = function(isLeft){
-		ClassicalGameService.moveNavigate(isLeft);
+		GameService.moveNavigate(isLeft);
 	}
 }
 

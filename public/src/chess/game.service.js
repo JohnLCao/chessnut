@@ -20,7 +20,7 @@ function GameService(PromotionService, $rootScope){
 	service.onDragStart = function(source, piece, position, orientation) {
 	  if ( service.in_history ||
 	  	   service.timeOut ||
-	  	   service.game.game_over() === true ||
+	  	   service.game.game_over() ||
 	      (service.game.turn() === 'w' && piece.search(/^b/) !== -1) ||
 	      (service.game.turn() === 'b' && piece.search(/^w/) !== -1)) {
 	    return false;
@@ -54,10 +54,17 @@ function GameService(PromotionService, $rootScope){
 	// for castling, en passant, pawn promotion
 	service.onSnapEnd = function() {
 		if (service.promoting) return;
-	  service.board.position(service.game.fen());
-	  $rootScope.$broadcast('game:moving_side', {
-	  	color: service.game.turn()
-	  });
+	  	service.board.position(service.game.fen());
+	  	$rootScope.$broadcast('game:moving_side', {
+	  		color: service.game.turn()
+	  	});
+
+	  	if (service.game.game_over()){
+	  		$rootScope.$broadcast('game:game_over', {
+	  			winner: (service.game.turn()==='w') ? 'black' : 'white' 
+	  		});
+	  	}
+
 	};
 
 	var cfg = {

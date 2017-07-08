@@ -39,7 +39,11 @@ function ChessClockController($interval, $scope, $rootScope){
 	$scope.$on('game:moving_side', function(event, data){
 		$ctrl.movingSide = data.color;
 		$ctrl.movingSideColor = (data.color === 'w') ? 'white' : 'black';
-	})
+	});
+
+	$scope.$on('game:game_over', function(event, data){
+		$ctrl.endClock();
+	});
 
 	$ctrl.chessclock = $interval(function(){
 		if ($ctrl.movingSide){
@@ -57,13 +61,15 @@ function ChessClockController($interval, $scope, $rootScope){
 			}
 
 			if (whiteTime === 0 || blackTime === 0){
-				$ctrl.endClock();
+				$ctrl.endClock(true);
 			}
 		}
 	}, 100);
 
-	$ctrl.endClock = function(){
-		$rootScope.$broadcast('chessclock:timeout');
+	$ctrl.endClock = function(timeOut=false){
+		if (timeOut){
+			$rootScope.$broadcast('chessclock:timeout');
+		}
 		$interval.cancel($ctrl.chessclock);
 	}
 };

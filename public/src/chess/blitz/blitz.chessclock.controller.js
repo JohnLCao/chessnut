@@ -71,6 +71,7 @@ function ChessClockController($interval, $scope, $rootScope){
 			$rootScope.$broadcast('chessclock:timeout');
 		}
 		$interval.cancel($ctrl.chessclock);
+		$ctrl.movingSideColor = 'gold'; //blitz game is over, display gold line between player's times
 	}
 };
 

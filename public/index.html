@@ -16,14 +16,32 @@
 	<header>
 		<div class="container">
 			<div class="row">
-				<a href="#" class="col-lg-2 col-xl-2">				
-					<span class="glyphicon glyphicon-question-sign" id="about"></span>
+				<a class="col-lg-2 col-xl-2">
+					<span class="glyphicon glyphicon-question-sign" id="about" 
+					onclick="$('#about-list').slideToggle(300)"></span>
+					<div id="about-list" style="display:none;">
+						<ul>
+							<li>What is this?</li>
+							<li>Who did this?</li>
+							<li>Acknowledgements</li>
+						</ul>
+					</div>
 				</a>
+
 				<div class="col-lg-8 col xl-8">
 					<img id="logo" src="img/chessnut_logo.png">
 				</div>
-				<a href="#" class="col-lg-2 col-xl-2">
-					<span class="glyphicon glyphicon-user col-lg-2 col-xl-8" id="user"></span>
+				<a class="col-lg-2 col-xl-2">
+					<span class="glyphicon glyphicon-user col-lg-2 col-xl-8" id="user"
+					onclick="$('#user-list').slideToggle(300)"></span>
+					<div id="user-list" style="display:none;">
+						<ul>
+							<li>profile</li>
+							<li>friends</li>
+							<li>games</li>
+							<li>statistics</li>
+						</ul>
+					</div>
 				</a>
 			</div>
 		</div>

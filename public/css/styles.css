@@ -11,6 +11,18 @@
 	top: 30%;
 }
 
+#about-list, #user-list {
+	position: relative;
+	top: 15px;
+	background: white;
+	display: block;
+	z-index: 1;
+}
+
+#user-list{
+	top: 60px;
+}
+
 .board {
 	width: 90%;
 	margin: auto;

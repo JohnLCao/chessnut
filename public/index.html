@@ -16,7 +16,7 @@
 	<header>
 		<div class="container">
 			<div class="row">
-				<a class="col-lg-2 col-xl-2">
+<!-- 				<a class="col-lg-2 col-xl-2">
 					<span class="glyphicon glyphicon-question-sign" id="about" 
 					onclick="$('#about-list').slideToggle(300)"></span>
 					<div id="about-list" style="display:none;">
@@ -26,12 +26,13 @@
 							<li>Acknowledgements</li>
 						</ul>
 					</div>
-				</a>
+				</a> -->
+				<about class="col-lg-2 col-xl-2"></about>
 
 				<div class="col-lg-8 col xl-8">
 					<img id="logo" src="img/chessnut_logo.png">
 				</div>
-				<a class="col-lg-2 col-xl-2">
+<!-- 				<a class="col-lg-2 col-xl-2">
 					<span class="glyphicon glyphicon-user col-lg-2 col-xl-8" id="user"
 					onclick="$('#user-list').slideToggle(300)"></span>
 					<div id="user-list" style="display:none;">
@@ -42,7 +43,8 @@
 							<li>statistics</li>
 						</ul>
 					</div>
-				</a>
+				</a> -->
+				<user class="col-lg-2 col-xl-2"></user>
 			</div>
 		</div>
 	</header>
@@ -96,5 +98,10 @@
 <script type="text/javascript" src="src/chess/blitz/blitz.panel.controller.js"></script>
 <script type="text/javascript" src="src/chess/blitz/blitz.chessclock.component.js"></script>
 <script type="text/javascript" src="src/chess/blitz/blitz.chessclock.controller.js"></script>
+<!-- header scripts-->
+<script type="text/javascript" src="src/chess/header/about/about.component.js"></script>
+<script type="text/javascript" src="src/chess/header/about/about.controller.js"></script>
+<script type="text/javascript" src="src/chess/header/user/user.component.js"></script>
+<script type="text/javascript" src="src/chess/header/user/user.controller.js"></script>
 </body>
 </html>

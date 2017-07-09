@@ -8,7 +8,11 @@
 	font-size: 3.5vw;
 	position: relative;
 	left: 30%;
-	top: 30%;
+}
+
+about, user {
+	position: relative;
+	top: 95px;
 }
 
 #about-list, #user-list {
@@ -38,11 +42,6 @@ body {
 header {
 	position: relative;
 	background: #fff;
-}
-
-header .row a {
-	position: relative;
-	top: 95px;
 }
 
 #left, #right {

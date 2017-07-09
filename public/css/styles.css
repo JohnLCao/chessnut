@@ -45,13 +45,9 @@ header .row a {
 	top: 95px;
 }
 
-.container[ng-app="chessnut"] a {
-	position: relative;
-	top: 250px;
-}
-
 #left, #right {
 	position: relative;
+	top: 250px;
 	font-size: 4vw;
 	color: black;
 }

@@ -86,6 +86,9 @@ function GameService(PromotionService, $rootScope){
 		}
 		service.board = ChessBoard(board_id, cfg);
 		service.timeOut = false;
+		service.move_index = -1;
+		service.promoting = false;
+		service.in_history = false;
 		return service.board;
 	}
 

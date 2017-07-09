@@ -1,12 +1,11 @@
-<a>
-	<span class="glyphicon glyphicon-user col-lg-2 col-xl-8" id="user"
-	ng-click="$ctrl.toggleList()"></span>
-	<div id="user-list" style="display:none;">
-		<ul>
-			<li>profile</li>
-			<li>friends</li>
-			<li>games</li>
-			<li>statistics</li>
-		</ul>
-	</div>
-</a>
+<div class="dropdown">
+  <button class="btn btn-default dropdown-toggle text-center headerButton" type="button" id="userMenu" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+    <span class="glyphicon glyphicon-user" id="about"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="userMenu">
+    <li><a href="#">Profile</a></li>
+    <li><a href="#">Friends</a></li>
+    <li><a href="#">Games</a></li>
+    <li><a href="#">Statistics</a></li>
+  </ul>
+</div>

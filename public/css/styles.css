@@ -7,24 +7,39 @@
 #about, #user {
 	font-size: 3.5vw;
 	position: relative;
-	left: 30%;
 }
 
 about, user {
 	position: relative;
-	top: 95px;
+	top: 94px;
 }
 
-#about-list, #user-list {
+.headerButton{
 	position: relative;
-	top: 15px;
-	background: white;
-	display: block;
-	z-index: 1;
+	left: 30%;
+	text-align: center;
+	border: 0;
+	color: #337ab7;
 }
 
-#user-list{
-	top: 60px;
+.headerButton:active, .headerButton:focus{
+	background: white !important;
+	outline: 0 !important;
+	color: midnightblue !important;
+}
+
+.headerButton:hover{
+	background: white;
+	color: midnightblue;
+}
+
+.headerButton:not(:focus){
+	background: white !important;
+	color: #337ab7 !important;
+}
+
+.headerMenu{
+
 }
 
 .board {
@@ -174,3 +189,4 @@ header {
 #blackTime{
 	color: black;
 }
+

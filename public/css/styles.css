@@ -237,4 +237,18 @@ header {
 }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
+#what{
+	margin-top: 10px;
+}
 
+#what h1{
+	font-family: 'Heebo', sans-serif;
+	font-weight: bold;
+	color: aliceblue;
+	font-size: 25px;
+}
+
+#sandbox{
+	width: 40%;
+	margin: auto;
+}

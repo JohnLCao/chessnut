@@ -196,3 +196,31 @@ header {
 	color: black;
 }
 
+#ack{
+	font-family: 'Heebo', sans-serif;
+	font-weight: bold;
+	margin-top: 20px;
+}
+
+#ack p:nth-child(2){
+	font-size: 17px;
+	margin-top: 40px;
+}
+
+#ack p:nth-child(3){
+	font-size: 13px;
+}
+
+#ack a{
+	font-size: 23px;
+	color: white;
+}
+
+#ack a:hover{
+	color: gold
+}
+
+#ack hr {
+	margin-top: 40px;
+	margin-bottom: 40px;
+}

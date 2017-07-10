@@ -1,5 +1,6 @@
-<div class="dropdown">
-  <button class="btn btn-default dropdown-toggle text-center headerButton" type="button" id="userMenu" data-toggle="dropdown" aria-haspopup="false" aria-expanded="false">
+<div class="dropdown" id="user-dropdown">
+  <button class="btn btn-default dropdown-toggle text-center headerButton" type="button" id="userMenu" 
+   aria-haspopup="false" aria-expanded="false" ng-click="$ctrl.toggleList()">
     <span class="glyphicon glyphicon-user" id="about"></span>
   </button>
   <ul class="dropdown-menu headerMenu" aria-labelledby="userMenu">

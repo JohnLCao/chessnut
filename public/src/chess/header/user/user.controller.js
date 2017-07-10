@@ -8,7 +8,10 @@ angular.module('chessnut')
 function UserController(){
 	var $ctrl = this;
 	$ctrl.toggleList = function(){
-		$('#user-list').slideToggle(300);
+		var userDropDown = $('#user-dropdown');
+		userDropDown.attr('class').includes('open') ? 
+			userDropDown.removeClass('open') : 
+			userDropDown.addClass('open');
 	};
 };	
 

@@ -8,7 +8,11 @@ angular.module('chessnut')
 function AboutController(){
 	var $ctrl = this;
 	$ctrl.toggleList = function(){
-		$('#about-list').slideToggle(300);
+		var aboutDropMenu = $('#about-dropdown');
+
+		aboutDropMenu.attr('class').includes('open') ? 
+			aboutDropMenu.removeClass('open') : 
+			aboutDropMenu.addClass('open');
 	};
 };	
 

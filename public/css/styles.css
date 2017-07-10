@@ -19,7 +19,6 @@ about, user {
 	left: 30%;
 	text-align: center;
 	border: 0;
-	color: #337ab7;
 }
 
 .headerButton:active, .headerButton:focus{
@@ -28,18 +27,24 @@ about, user {
 	color: midnightblue !important;
 }
 
-.headerButton:hover{
-	background: white;
-	color: midnightblue;
-}
-
-.headerButton:not(:focus){
+.headerButton:not(:focus), .headerButton:not(:hover){
 	background: white !important;
 	color: #337ab7 !important;
 }
 
-.headerMenu{
+.headerButton:hover{
+	background: white;
+	color: midnightblue !important;
+}
 
+.headerMenu{
+	font-family: 'Heebo', sans-serif;
+	font-size: 17px;
+}
+
+.headerMenu li a:hover {
+	background-color: #E8F6FD;
+	font-size: 20px;
 }
 
 .board {

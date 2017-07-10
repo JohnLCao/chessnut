@@ -202,7 +202,8 @@ header {
 	margin-top: 20px;
 }
 
-#ack p:nth-child(2){
+#ack p:nth-child(2), #who p{
+	font-weight: bold;
 	font-size: 17px;
 	margin-top: 40px;
 }
@@ -224,3 +225,16 @@ header {
 	margin-top: 40px;
 	margin-bottom: 40px;
 }
+
+#who img{
+	width: 20%;
+	margin-top: 30px;
+	box-shadow: 0 0 12px black;
+}
+
+#who img:hover{
+	animation: spin 1.25s ease 1;
+}
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+

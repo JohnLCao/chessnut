@@ -3,8 +3,8 @@
     <span class="glyphicon glyphicon-question-sign" id="about"></span>
   </button>
   <ul class="dropdown-menu headerMenu" aria-labelledby="aboutMenu">
-    <li><a>What is this?</a></li>
-    <li><a>Who did this?</a></li>
-    <li><a>Thanks to...</a></li>
+    <li><a ui-sref="app-description" ng-click="$ctrl.closeList()">What is this?</a></li>
+    <li><a ui-sref="john-description" ng-click="$ctrl.closeList()">Who did this?</a></li>
+    <li><a ui-sref="acknowledgements" ng-click="$ctrl.closeList()">Thanks to...</a></li>
   </ul>
 </div>

@@ -22,6 +22,18 @@ function RouteConfig($stateProvider, $urlRouterProvider){
 			url: '/blitz',
 			templateUrl: 'src/chess/routes/templates/blitz.html'
 		})
+		.state('app-description', {
+			url: '/what',
+			templateUrl: 'src/chess/routes/templates/what.html'
+		})
+		.state('john-description', {
+			url: '/who',
+			templateUrl: 'src/chess/routes/templates/who.html'
+		})
+		.state('acknowledgements', {
+			url: '/thanks',
+			templateUrl: 'src/chess/routes/templates/thanks.html'
+		})
 };
 
 })(); //IIFE

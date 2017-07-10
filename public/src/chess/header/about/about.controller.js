@@ -14,6 +14,10 @@ function AboutController(){
 			aboutDropMenu.removeClass('open') : 
 			aboutDropMenu.addClass('open');
 	};
+
+	$ctrl.closeList = function(){
+		$('#about-dropdown').removeClass('open');
+	}
 };	
 
 })(); //IIFE

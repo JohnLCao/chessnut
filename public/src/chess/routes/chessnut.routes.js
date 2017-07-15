@@ -7,7 +7,7 @@ angular.module('chessnut')
 
 RouteConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 function RouteConfig($stateProvider, $urlRouterProvider){
-	$urlRouterProvider.otherwise('/classical');
+	$urlRouterProvider.otherwise('/login');
 
 	$stateProvider
 		.state('classical', {

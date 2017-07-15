@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 	skip_before_action :ensure_login, only: [:new, :create]
 
   def new
-  	# sessions/new.html.erb
+  	# should be handled by client side code
   end
 
   def create
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
  			session[:user_id] = user.id
  			redirect_to root_path
  		else
- 			redirect_to login_path
+ 			redirect_to '/#!/login'
  		end 
   end
 

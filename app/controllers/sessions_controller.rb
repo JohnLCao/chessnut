@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 	skip_before_action :ensure_login, only: [:new, :create]
+	skip_before_action :verify_authenticity_token, only: [:create]
 
   def new
   	# should be handled by client side code
@@ -10,9 +11,9 @@ class SessionsController < ApplicationController
  		password = params[:user][:password]
  		if user && user.authenticate(password)
  			session[:user_id] = user.id
- 			redirect_to root_path
+ 			render status: 200
  		else
- 			redirect_to '/#!/login'
+ 			render status: 401
  		end 
   end
 

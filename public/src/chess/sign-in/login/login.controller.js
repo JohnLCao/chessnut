@@ -8,11 +8,11 @@ angular.module('chessnut')
 LoginController.$inject = ['$state', '$http']
 function LoginController($state, $http){
 	var $ctrl = this;
-
+	var serverUrl = 'https://chessnutio.herokuapp.com/sessions'
 	$ctrl.login = function(){
 		$http({
 			method: 'POST',
-			url: 'http://localhost:3000/sessions',
+			url: serverUrl,
 			data:{
 				user:{
 					username: $ctrl.username,

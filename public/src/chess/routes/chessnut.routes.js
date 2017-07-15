@@ -39,7 +39,7 @@ function RouteConfig($stateProvider, $urlRouterProvider){
 			templateUrl: 'src/chess/routes/templates/login.html'
 		})
 		.state('signup', {
-			url: 'signup',
+			url: '/signup',
 			templateUrl: 'src/chess/routes/templates/signup.html'
 		})
 };

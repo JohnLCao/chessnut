@@ -4,8 +4,8 @@
 
 angular.module('chessnut')
 .component('login', {
-	templateUrl: 'src/chess/sign-in/login/login.html',
+	templateUrl: 'src/chess/sign-in/login/templates/login.html',
 	controller: 'LoginController'
-});
+})
 
 })(); //IIFE

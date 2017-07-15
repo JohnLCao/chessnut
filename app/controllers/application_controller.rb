@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :ensure_login
 
-	def main_page
-		redirect_to '/#!'
-	end
+	# def main_page
+	# 	redirect_to '/#!'
+	# end
 
   protected
   	def ensure_login

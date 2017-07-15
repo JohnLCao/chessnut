@@ -3,7 +3,7 @@
 'use strict';
 
 angular.module('chessnut')
-.controller('LoginController', LoginController)
+.controller('LoginController', LoginController);
 
 function LoginController(){
 	var $ctrl = this;

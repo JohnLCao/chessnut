@@ -5,15 +5,15 @@
 angular.module('chessnut')
 .controller('LoginController', LoginController)
 
-LoginController.$inject = ['$state', '$http']
-function LoginController($state, $http){
+LoginController.$inject = ['$state', '$http', 'LoginService']
+function LoginController($state, $http, LoginService){
 	var $ctrl = this;
 	var ProductionServerUrl = 'https://chessnutio.herokuapp.com/sessions';
 	var DevServerUrl = 'http://localhost:3000/sessions';
 	$ctrl.login = function(){
 		$http({
 			method: 'POST',
-			url: DevServerUrl,
+			url: ProductionServerUrl,
 			data:{
 				user:{
 					username: $ctrl.username,
@@ -21,6 +21,7 @@ function LoginController($state, $http){
 				}
 			} 
 		}).then(function(response){
+			LoginService.loggedIn = true;
 			$state.transitionTo('classical');
 		}).catch(function(error){
 			console.log(error);

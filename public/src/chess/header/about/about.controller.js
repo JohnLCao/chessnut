@@ -5,7 +5,8 @@
 angular.module('chessnut')
 .controller('AboutController', AboutController);
 
-function AboutController(){
+AboutController.$inject = ['LoginService'];
+function AboutController(LoginService){
 	var $ctrl = this;
 	$ctrl.toggleList = function(){
 		var aboutDropMenu = $('#about-dropdown');
@@ -17,7 +18,11 @@ function AboutController(){
 
 	$ctrl.closeList = function(){
 		$('#about-dropdown').removeClass('open');
-	}
+	};
+
+	$ctrl.isLoggedIn = function(){
+		return LoginService.loggedIn;
+	};
 };	
 
 })(); //IIFE

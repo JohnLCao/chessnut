@@ -1,4 +1,4 @@
-<div class="dropdown" id="about-dropdown">
+<div class="dropdown" id="about-dropdown" ng-if="$ctrl.isLoggedIn()">
   <button class="btn btn-default dropdown-toggle text-center headerButton" type="button" id="aboutMenu"  aria-haspopup="true" aria-expanded="true" ng-click="$ctrl.toggleList()">
     <span class="glyphicon glyphicon-question-sign" id="about"></span>
   </button>

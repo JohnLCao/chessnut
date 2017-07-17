@@ -19,6 +19,10 @@ function UserController(LoginService, $state){
 		 LoginService.loggedIn = false;
 		 $state.transitionTo('login');
 	};
+
+	$ctrl.isLoggedIn = function(){
+		return LoginService.loggedIn;
+	}
 };	
 
 })(); //IIFE

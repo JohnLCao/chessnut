@@ -5,8 +5,8 @@
 angular.module('chessnut')
 .controller('UserController', UserController);
 
-UserController.$inject = ['LoginService', '$state']
-function UserController(LoginService, $state){
+UserController.$inject = ['SigninService']
+function UserController(SigninService){
 	var $ctrl = this;
 	$ctrl.toggleList = function(){
 		var userDropDown = $('#user-dropdown');
@@ -16,12 +16,11 @@ function UserController(LoginService, $state){
 	};
 
 	$ctrl.logOut = function(){
-		 LoginService.loggedIn = false;
-		 $state.transitionTo('login');
+		 SigninService.logout();
 	};
 
 	$ctrl.isLoggedIn = function(){
-		return LoginService.loggedIn;
+		return SigninService.loggedIn;
 	}
 };	
 

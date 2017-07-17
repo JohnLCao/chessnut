@@ -5,8 +5,8 @@
 angular.module('chessnut')
 .controller('AboutController', AboutController);
 
-AboutController.$inject = ['LoginService'];
-function AboutController(LoginService){
+AboutController.$inject = ['SigninService'];
+function AboutController(SigninService){
 	var $ctrl = this;
 	$ctrl.toggleList = function(){
 		var aboutDropMenu = $('#about-dropdown');
@@ -21,7 +21,7 @@ function AboutController(LoginService){
 	};
 
 	$ctrl.isLoggedIn = function(){
-		return LoginService.loggedIn;
+		return SigninService.loggedIn;
 	};
 };	
 

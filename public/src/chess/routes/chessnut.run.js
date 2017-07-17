@@ -5,12 +5,12 @@
 angular.module('chessnut')
 .run(RunFunc);
 
-RunFunc.$inject = ['$rootScope', 'LoginService', '$transitions'];
-function RunFunc($rootScope, LoginService, $transitions){
+RunFunc.$inject = ['$rootScope', 'SigninService', '$transitions'];
+function RunFunc($rootScope, SigninService, $transitions){
 	$transitions.onStart({to: stateMatch}, ensureLogin);
 
 	function ensureLogin(trans){
-		if (!LoginService.loggedIn){
+		if (!SigninService.loggedIn){
 			return trans.router.stateService.target('login');
 		}
 	};

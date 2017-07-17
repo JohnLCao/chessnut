@@ -7,6 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 User.destroy_all
 User.create!([
-	{username: 'admin', password: 'chessnut'},
-	{username: 'vladmin', password: 'vladword'}
+	{username: 'admin', password: 'chessnut', email: 'lolz@lolz.com'},
+	{username: 'vladmin', password: 'vladword', email: 'dank@memes.com'}
 ])

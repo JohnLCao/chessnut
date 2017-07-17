@@ -7,6 +7,9 @@ angular.module('chessnut')
 
 function SignupController(){
 	var $ctrl = this;
+	$ctrl.signup = function(){
+		//transform login service to sign up service and do something here.
+	};
 };
 
 })(); //IIFE

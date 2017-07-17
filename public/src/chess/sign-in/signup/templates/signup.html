@@ -1,1 +1,35 @@
-<h1>Signup</h1>
+<fieldset>
+	<legend>Sign Up</legend>
+	<form name="signupForm" novalidate>
+		<input type="text" name="username" placeholder="Username"
+		 ng-model="$ctrl.user.username"
+		 required
+		>
+		<span class="error" ng-if="signupForm.username.$invalid && signupForm.username.$touched">
+			Invalid first name
+		</span>
+		<br><br>
+
+		<input type="password" name="password" placeholder="Password"
+		 ng-model="$ctrl.user.password"
+		 required
+		>
+		<span class="error" ng-if="signupForm.password.$invalid && signupForm.password.$touched">
+			Invalid password
+		</span>
+		<br><br>
+		
+		<input type="email" name="email" placeholder="your email"
+		 ng-model="$ctrl.user.email"
+		 required 
+		>
+		<span class="error" ng-if="signupForm.email.$invalid && signupForm.email.$touched">
+			Invalid email
+		</span>
+		<br><br>
+
+		<button 
+		 ng-disabled="signupForm.$invalid"
+		 ng-click="$ctrl.signup()">Sign up</button>
+	</form>
+</fieldset>

@@ -252,3 +252,8 @@ header {
 	width: 40%;
 	margin: auto;
 }
+
+.error {
+	font-weight: bold;
+	color: pink;
+}

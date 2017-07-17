@@ -13,7 +13,7 @@ function LoginController($state, $http, LoginService){
 	$ctrl.login = function(){
 		$http({
 			method: 'POST',
-			url: ProductionServerUrl,
+			url: DevServerUrl,
 			data:{
 				user:{
 					username: $ctrl.username,

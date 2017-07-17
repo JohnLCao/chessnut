@@ -8,8 +8,9 @@ angular.module('chessnut')
 SignupController.$inject = ['SigninService']
 function SignupController(SigninService){
 	var $ctrl = this;
+	$ctrl.user = {};
 	$ctrl.signup = function(){
-		//transform login service to sign up service and do something here.
+		SigninService.signup($ctrl.user);
 	};
 };
 

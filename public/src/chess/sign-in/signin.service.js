@@ -38,8 +38,23 @@ function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl){
 		$state.transitionTo('login');
 	};
 
-	service.signup = function(){
-
+	service.signup = function(user){
+		$http({
+			method: 'POST',
+			url: (DevBaseUrl + '/users'),
+			data:{
+				user: user
+			}
+		})
+		.then(function(response){
+			// login right away if sign up success
+			service.loggedIn = true;
+			$state.transitionTo('classical');
+		})
+		.catch(function(error){
+			console.log(error);
+			$state.transitionTo('signup')
+		});
 	};
 };
 

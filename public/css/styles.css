@@ -255,5 +255,74 @@ header {
 
 .error {
 	font-weight: bold;
-	color: pink;
+	color: red;
+}
+
+.signin-form {
+	position: relative;
+	display: block;
+	margin: auto;
+	background: white;
+	max-width: 400px;
+	padding: 45px;
+	padding-bottom: 35px;
+	text-align: center;
+	border: 2px solid maroon;
+	box-shadow: 0 0 12px maroon;
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.signin-form h1 {
+	margin-top: 0;
+	margin-bottom: 25px;
+}
+
+.signin-form input {
+  font-family: 'Heebo', sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+.signin-form button {
+  font-family: 'Heebo', sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: orange;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.signin-form button:hover{
+  background: #D2691E;
+}
+.signin-form button:active,
+.signin-form button:focus {
+  background: firebrick;
+}
+
+.signin-form button[disabled]{
+	background: #FFBF95 !important;
+	cursor: default;
+}
+
+.signin-form p{
+	margin-top: 10px;
+}
+.signin-form a{
+	color: darkorange;
+}
+.signin-form a:hover{
+	color: crimson;
 }

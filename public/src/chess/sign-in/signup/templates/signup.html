@@ -1,35 +1,36 @@
-<fieldset>
-	<legend>Sign Up</legend>
-	<form name="signupForm" novalidate>
-		<input type="text" name="username" placeholder="Username"
-		 ng-model="$ctrl.user.username"
-		 required
-		>
-		<span class="error" ng-if="signupForm.username.$invalid && signupForm.username.$touched">
-			Invalid first name
-		</span>
-		<br><br>
+<div class="col-lg-6 col-lg-offset-3 text-center">
+	<div class="signin-form">
+		<h1>Sign up</h1>
+		<form name="signupForm" novalidate>
+			<span class="error" ng-if="signupForm.username.$invalid && signupForm.username.$touched">
+				Invalid username
+			</span>
+			<input type="text" name="username" placeholder="Username"
+			 ng-model="$ctrl.user.username"
+			 required
+			>
 
-		<input type="password" name="password" placeholder="Password"
-		 ng-model="$ctrl.user.password"
-		 required
-		>
-		<span class="error" ng-if="signupForm.password.$invalid && signupForm.password.$touched">
-			Invalid password
-		</span>
-		<br><br>
-		
-		<input type="email" name="email" placeholder="your email"
-		 ng-model="$ctrl.user.email"
-		 required 
-		>
-		<span class="error" ng-if="signupForm.email.$invalid && signupForm.email.$touched">
-			Invalid email
-		</span>
-		<br><br>
+			<span class="error" ng-if="signupForm.password.$invalid && signupForm.password.$touched">
+				Invalid password
+			</span>
+			<input type="password" name="password" placeholder="Password"
+			 ng-model="$ctrl.user.password"
+			 required
+			>
+			
+			<span class="error" ng-if="signupForm.email.$invalid && signupForm.email.$touched">
+				Invalid email
+			</span>
+			<input type="email" name="email" placeholder="your email"
+			 ng-model="$ctrl.user.email"
+			 required 
+			>
 
-		<button 
-		 ng-disabled="signupForm.$invalid"
-		 ng-click="$ctrl.signup()">Sign up</button>
-	</form>
-</fieldset>
+			<button 
+			 ng-disabled="signupForm.$invalid"
+			 ng-click="$ctrl.signup()">Sign up
+			</button>
+		</form>
+		<p>Have an account alredy? <a ui-sref="login">Login</a></p>
+	</div>
+</div>

@@ -41,7 +41,7 @@ function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl){
 	service.signup = function(user){
 		$http({
 			method: 'POST',
-			url: (DevBaseUrl + '/users'),
+			url: (DevBaseUrl + '/users.json'),
 			data:{
 				user: user
 			}
@@ -53,6 +53,13 @@ function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl){
 		})
 		.catch(function(error){
 			console.log(error);
+			if (error.data.username && error.data.username[0].includes('taken')){
+				//display some error to user
+				console.log('this username is already taken!');
+			}
+			else if (error.data.email && error.data.email[0].includes('taken')){
+				console.log('there is an account associated with this email already!'); 
+			}
 			$state.transitionTo('signup')
 		});
 	};

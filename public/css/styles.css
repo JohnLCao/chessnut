@@ -258,6 +258,13 @@ header {
 	color: red;
 }
 
+.server-error {
+	font-weight: bold;
+	color: red;
+	font-size: 15px;
+	margin bottom: 10px;
+}
+
 .signin-form {
 	position: relative;
 	display: block;
@@ -307,8 +314,7 @@ header {
 .signin-form button:hover{
   background: #D2691E;
 }
-.signin-form button:active,
-.signin-form button:focus {
+.signin-form button:active{
   background: firebrick;
 }
 

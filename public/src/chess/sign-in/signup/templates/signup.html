@@ -1,5 +1,6 @@
 <div class="col-lg-6 col-lg-offset-3 text-center">
 	<div class="signin-form">
+		<span class="server-error" ng-if="$ctrl.signupError">{{$ctrl.signupError}}</span>
 		<h1>Sign up</h1>
 		<form name="signupForm" novalidate>
 			<span class="error" ng-if="signupForm.username.$invalid && signupForm.username.$touched">

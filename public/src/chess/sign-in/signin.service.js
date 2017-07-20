@@ -7,13 +7,14 @@ angular.module('chessnut')
 .constant('ProductionBaseUrl', 'https://chessnutio.herokuapp.com')
 .constant('DevBaseUrl', 'http://localhost:3000');
 
-SigninService.$inject = ['$state', '$http', 'ProductionBaseUrl', 'DevBaseUrl']
-function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl){
+SigninService.$inject = ['$state', '$http', 'ProductionBaseUrl', 'DevBaseUrl', '$q']
+function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl, $q){
 	var service = this;
 	service.loggedIn = false;
+	service.signupError = null;
 
 	service.login = function(username, password){
-		$http({
+		return $http({
 			method: 'POST',
 			url: (ProductionBaseUrl + '/sessions'),
 			data:{
@@ -30,6 +31,7 @@ function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl){
 		.catch(function(error){
 			console.log(error);
 			$state.transitionTo('login');
+			return $q.reject(error);
 		});
 	};
 
@@ -39,7 +41,7 @@ function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl){
 	};
 
 	service.signup = function(user){
-		$http({
+		return $http({
 			method: 'POST',
 			url: (ProductionBaseUrl + '/users.json'),
 			data:{
@@ -55,12 +57,17 @@ function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl){
 			console.log(error);
 			if (error.data.username && error.data.username[0].includes('taken')){
 				//display some error to user
-				console.log('this username is already taken!');
+				service.signupError = 'This username is already taken!';
 			}
 			else if (error.data.email && error.data.email[0].includes('taken')){
-				console.log('there is an account associated with this email already!'); 
+				service.signupError = 'This email is associated with an existing account!';
 			}
-			$state.transitionTo('signup')
+			else {
+				//some other error occured
+				service.signupError = 'Sorry, something went wrong. Please retry.'
+			}
+			$state.transitionTo('signup');
+			return $q.reject(error);
 		});
 	};
 };

@@ -16,7 +16,7 @@ function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl, $q){
 	service.login = function(username, password){
 		return $http({
 			method: 'POST',
-			url: (ProductionBaseUrl + '/sessions'),
+			url: (DevBaseUrl + '/sessions'),
 			data:{
 				user:{
 					username: username,
@@ -43,7 +43,7 @@ function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl, $q){
 	service.signup = function(user){
 		return $http({
 			method: 'POST',
-			url: (ProductionBaseUrl + '/users.json'),
+			url: (DevBaseUrl + '/users.json'),
 			data:{
 				user: user
 			}

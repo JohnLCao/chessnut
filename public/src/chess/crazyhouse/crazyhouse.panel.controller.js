@@ -7,6 +7,10 @@ angular.module('chessnut')
 
 function CrazyhousePanelController(){
 	var $ctrl = this;
+	$ctrl.onClickPlay = function(){
+		//do nothing at the moment
+		console.log('John will implement me eventually, I just know it!');
+	};
 };
 
 })(); //IIFE

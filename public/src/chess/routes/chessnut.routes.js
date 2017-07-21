@@ -22,6 +22,10 @@ function RouteConfig($stateProvider, $urlRouterProvider){
 			url: '/blitz',
 			templateUrl: 'src/chess/routes/templates/blitz.html'
 		})
+		.state('crazyhouse', {
+			url: '/crazyhouse',
+			templateUrl: 'src/chess/routes/templates/crazyhouse.html'
+		})
 		.state('app-description', {
 			url: '/what',
 			templateUrl: 'src/chess/routes/templates/what.html'

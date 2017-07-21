@@ -12,11 +12,12 @@ function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl, $q){
 	var service = this;
 	service.loggedIn = false;
 	service.signupError = null;
+	service.loginError = null;
 
 	service.login = function(username, password){
 		return $http({
 			method: 'POST',
-			url: (ProductionBaseUrl + '/sessions'),
+			url: (DevBaseUrl + '/sessions'),
 			data:{
 				user:{
 					username: username,
@@ -26,10 +27,17 @@ function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl, $q){
 		})
 		.then(function(response){
 			service.loggedIn = true;
+			service.loginError = null;
 			$state.transitionTo('classical');
 		})
 		.catch(function(error){
 			console.log(error);
+			if (error.status === 401){
+				service.loginError = 'Invalid username and password combination';
+			}
+			else{
+				service.loginError = 'Sorry, something went wrong. Please retry.'
+			}
 			$state.transitionTo('login');
 			return $q.reject(error);
 		});
@@ -43,7 +51,7 @@ function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl, $q){
 	service.signup = function(user){
 		return $http({
 			method: 'POST',
-			url: (ProductionBaseUrl + '/users.json'),
+			url: (DevBaseUrl + '/users.json'),
 			data:{
 				user: user
 			}
@@ -51,6 +59,7 @@ function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl, $q){
 		.then(function(response){
 			// login right away if sign up success
 			service.loggedIn = true;
+			service.signupError = null;
 			$state.transitionTo('classical');
 		})
 		.catch(function(error){

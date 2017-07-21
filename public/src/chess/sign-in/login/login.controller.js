@@ -12,7 +12,7 @@ function LoginController(SigninService){
 	$ctrl.login = function(){
 		SigninService.login($ctrl.username, $ctrl.password)
 		.catch(function(error){
-			$ctrl.loginError = "Invalid username password combination";
+			$ctrl.loginError = SigninService.loginError;
 		});
 	};
 };

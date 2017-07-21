@@ -45,6 +45,12 @@ function GameService(PromotionService, $rootScope){
 			 	return 'snapback';
 			 } //illegal move
 			 else {
+			 	if (move.flags.includes('c') || move.flags.includes('e')) {//capture or enpassant
+			 		$rootScope.$broadcast('game:capture', {
+			 			captured: move.captured,
+			 			color: (move.color === 'w') ? 'b' : 'w'
+			 		});
+			 	}
 			 	service.move_index++;
 			 }
 		}

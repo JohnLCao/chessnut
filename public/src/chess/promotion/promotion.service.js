@@ -82,7 +82,11 @@ function PromotionService($rootScope){
 
 	function onDialogClose(){
 		promotion.move_cfg.promotion = promotion.promote_to;
-		promotion.game.move(promotion.move_cfg);
+		var move = promotion.game.move(promotion.move_cfg);
+		$rootScope.$broadcast('game:capture', {
+ 			captured: move.captured,
+ 			color: move.color
+ 		});
 	};
 
 	function getImgSrc(piece, color) {

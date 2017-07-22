@@ -21,7 +21,7 @@ function RunFunc($rootScope, SigninService, $transitions, $cookies){
 	function stateMatch(state){
 		// console.log(state);
 		var protected_states = [
-		'classical','blitz','chess960','crazyhouse','app-description','john-description','acknowledgements'
+		'classical','blitz','chess960','crazyhouse','app-description','john-description','acknowledgements','user-profile'
 		];
 
 		return protected_states.includes(state.name);

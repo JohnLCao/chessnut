@@ -5,8 +5,16 @@
 angular.module('chessnut')
 .controller('UserProfileController', UserProfileController);
 
-function UserProfileController(){
+UserProfileController.$inject = ['UserService'];
+function UserProfileController(UserService){
 	var $ctrl = this;
+	$ctrl.user = null;
+
+	$ctrl.getUser = function(){
+		$ctrl.user = UserService.getUser();
+	}
+
+	$ctrl.$onInit = $ctrl.getUser;
 };
 
 })(); //IIFE

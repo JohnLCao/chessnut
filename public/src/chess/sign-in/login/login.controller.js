@@ -12,9 +12,8 @@ function LoginController(SigninService, $cookies){
 	$ctrl.login = function(){
 		SigninService.login($ctrl.username, $ctrl.password)
 		.then(function(response){
-			if (!$cookies.get('login_session')){// convenience cookie, real cookie not scriptable
-				$cookies.put('login_session', true);
-			}
+			// convenience cookie, real cookie not scriptable
+			$cookies.put('login_session', $ctrl.username);
 		})
 		.catch(function(error){
 			$ctrl.loginError = SigninService.loginError;

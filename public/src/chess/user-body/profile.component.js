@@ -3,7 +3,7 @@
 'use strict';
 
 angular.module('chessnut')
-.component('UserProfile', {
+.component('userProfile', {
 	templateUrl: 'src/chess/user-body/templates/profile.html',
 	controller: 'UserProfileController'
 })

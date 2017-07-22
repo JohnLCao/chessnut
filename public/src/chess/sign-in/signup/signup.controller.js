@@ -13,7 +13,7 @@ function SignupController(SigninService, $cookies){
 	$ctrl.signup = function(){
 		SigninService.signup($ctrl.user)
 		.then(function(response){ //convenience cookie, real cookie not scriptable
-			$cookies.put('login_session', true);
+			$cookies.put('login_session', $ctrl.user.username);
 		})
 		.catch(function(error){
 			$ctrl.signupError = SigninService.signupError;

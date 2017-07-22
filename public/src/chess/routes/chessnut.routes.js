@@ -46,6 +46,10 @@ function RouteConfig($stateProvider, $urlRouterProvider){
 			url: '/signup',
 			templateUrl: 'src/chess/routes/templates/signup.html'
 		})
+		.state('user-profile', {
+			url: '/profile',
+			templateUrl: 'src/chess/routes/templates/profile.html'
+		})
 };
 
 })(); //IIFE

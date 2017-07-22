@@ -2,6 +2,6 @@
 
 'use strict';
 
-angular.module('chessnut', ['ui.router']);
+angular.module('chessnut', ['ui.router', 'ngCookies']);
 
 })() //IIFE

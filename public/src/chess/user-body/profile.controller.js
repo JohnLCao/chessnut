@@ -11,7 +11,10 @@ function UserProfileController(UserService){
 	$ctrl.user = null;
 
 	$ctrl.getUser = function(){
-		$ctrl.user = UserService.getUser();
+		UserService.getUser().
+		then(function(response){
+			$ctrl.user = UserService.user;
+		});
 	}
 
 	$ctrl.$onInit = $ctrl.getUser;

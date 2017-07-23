@@ -5,14 +5,23 @@
 angular.module('chessnut')
 .service('UserService', UserService);
 
-UserService.$inject = ['$cookies'];
-function UserService($cookies){
+UserService.$inject = ['$cookies', '$http', 'ProductionBaseUrl', 'DevBaseUrl'];
+function UserService($cookies, $http, ProductionBaseUrl, DevBaseUrl){
 	var service = this;
+	var dummy_user_id = 0; //current logged in user set on the server side
 	service.user = {};
 	service.getUser = function(){
-		service.user.username = $cookies.get('login_session');
-		console.log(service.user.username);
-		return service.user;
+		return $http({
+			method: 'GET',
+			url: DevBaseUrl + '/users/' + dummy_user_id
+		})
+		.then(function(response){
+			console.log(response);
+			service.user = response.data;
+		})
+		.catch(function(error){
+			console.log(error);
+		})
 	};
 };
 

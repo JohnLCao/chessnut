@@ -332,3 +332,19 @@ header {
 .signin-form a:hover{
 	color: crimson;
 }
+.captured-piece{
+	margin-top: 10px;
+	position: relative;
+}
+.captured-piece-counter{
+  background-color: crimson;
+  border-radius: 20px;
+  color: white;
+  padding: 4px 10px;
+  font-size: 15px;
+  font-weight: bold;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  right: 0;
+}

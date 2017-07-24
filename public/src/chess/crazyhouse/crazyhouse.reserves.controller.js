@@ -8,9 +8,20 @@ angular.module('chessnut')
 ReservesController.$inject = ['$scope'];
 function ReservesController($scope){
 	var $ctrl = this;
+	$ctrl.piece_theme = "img/chesspieces/wikipedia/";
+	$ctrl.captured_pieces = [];
+	$ctrl.piece_multiplicity = {};
 
 	$scope.$on('game:capture', function(event, data){
-		console.log('I got a '+data.color+data.captured);
+		var piece = data.color + data.captured.toUpperCase();
+		if ($ctrl.captured_pieces.includes(piece)){
+			$ctrl.piece_multiplicity[piece]++;
+		}
+		else{
+			$ctrl.captured_pieces.push(piece);
+			$ctrl.piece_multiplicity[piece] = 1; 
+		}
+ 		$scope.$apply();
 	});
 };
 

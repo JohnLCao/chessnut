@@ -7,8 +7,8 @@ angular.module('chessnut')
 .constant('ProductionBaseUrl', 'https://chessnutio.herokuapp.com')
 .constant('DevBaseUrl', 'http://localhost:3000');
 
-SigninService.$inject = ['$state', '$http', 'ProductionBaseUrl', 'DevBaseUrl', '$q']
-function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl, $q){
+SigninService.$inject = ['$state', '$http', 'ProductionBaseUrl', 'DevBaseUrl', '$q', '$cookies']
+function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl, $q, $cookies){
 	var service = this;
 	service.loggedIn = false;
 	service.signupError = null;
@@ -45,6 +45,7 @@ function SigninService($state, $http, ProductionBaseUrl, DevBaseUrl, $q){
 
 	service.logout = function(){
 		service.loggedIn = false;
+		$cookies.remove('login_session'); //get rid of convenience cookie
 		$state.transitionTo('login');
 	};
 

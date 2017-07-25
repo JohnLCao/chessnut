@@ -1,1 +1,5 @@
-<div id="{{$ctrl.name}}" class="board responsive" ng-drop="true" ng-drop-success="$ctrl.onDropReserve()"></div>
+<div id="{{$ctrl.name}}" class="board responsive" 
+	ondrop="angular.element(this).scope().$ctrl.onDropReserve()" 
+	ondragover="angular.element(this).scope().$ctrl.onDragOver(event)"
+>
+</div>

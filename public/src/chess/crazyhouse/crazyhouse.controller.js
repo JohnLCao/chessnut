@@ -10,12 +10,13 @@ function CrazyhouseController(GameService, $document, MoveNavigationService, $sc
 	var $ctrl = this;
 	$ctrl.name = "crazyhouse";
 	$ctrl.dragging = false;
+	$ctrl.drag_piece = null;
 
 	$ctrl.initialize = function(){
 		$ctrl.game = GameService.getGame();
 		$ctrl.board = GameService.makeBoard($ctrl.name);
 		$(document).on('keyup', MoveNavigationService.moveListener);
-		$('.square-55d63').on('mouseover', $ctrl.dropHelper)
+		$('.square-55d63').on('mouseover', $ctrl.dropHelper);
 	};
 
 	$document.ready($ctrl.initialize);
@@ -30,6 +31,7 @@ function CrazyhouseController(GameService, $document, MoveNavigationService, $sc
 
 	$scope.$on('crazyhouse:reserves:drag_start', function(event, data){
 		$ctrl.dragging = true;
+		$ctrl.drag_piece = data.piece;
 	})
 
 	$ctrl.onDropReserve = function(){
@@ -39,10 +41,15 @@ function CrazyhouseController(GameService, $document, MoveNavigationService, $sc
 
 	$ctrl.dropHelper = function(e){
 		if ($ctrl.dragging){
-			console.log(e.target.getAttribute('data-square'));
-		 	$ctrl.dragging = false; //consider html5 ondragover event
+			console.log('a', $ctrl.drag_piece, 'on', e.target.getAttribute('data-square'));
+		 	$ctrl.dragging = false;
+		 	$ctrl.drag_piece = null;
 		}
 	};
+
+	$ctrl.onDragOver = function(e){
+		e.preventDefault();
+	}
 };
 
 })(); //IIFE

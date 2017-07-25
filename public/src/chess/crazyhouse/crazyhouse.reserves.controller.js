@@ -24,8 +24,9 @@ function ReservesController($scope, $rootScope){
  		$scope.$apply();
 	});
 
-	$ctrl.dragStart = function(){
-		$rootScope.$broadcast('crazyhouse:reserves:drag_start');
+	$ctrl.dragStart = function(event){
+		var piece = event.srcElement.getAttribute('piece');
+		$rootScope.$broadcast('crazyhouse:reserves:drag_start', {piece: piece});
 	}
 };
 

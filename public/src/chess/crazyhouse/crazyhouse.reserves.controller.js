@@ -13,7 +13,8 @@ function ReservesController($scope, $rootScope){
 	$ctrl.piece_multiplicity = {};
 
 	$scope.$on('game:capture', function(event, data){
-		var piece = data.color + data.captured.toUpperCase();
+		var color = (data.color === 'w') ? 'b' : 'w';
+		var piece = color + data.captured.toUpperCase();
 		if ($ctrl.captured_pieces.includes(piece)){
 			$ctrl.piece_multiplicity[piece]++;
 		}
@@ -23,6 +24,17 @@ function ReservesController($scope, $rootScope){
 		}
  		$scope.$apply();
 	});
+
+	$scope.$on('crazyhouse:reserves:drag_stop', function(event, data){
+		var piece = data.piece;
+		if($ctrl.piece_multiplicity[piece] > 1){
+			$ctrl.piece_multiplicity[piece]--;
+		}else{
+			var index = $ctrl.captured_pieces.indexOf(piece);
+			$ctrl.captured_pieces.splice(index, 1);
+		}
+		$scope.$apply();
+	})
 
 	$ctrl.dragStart = function(event){
 		var piece = event.srcElement.getAttribute('piece');

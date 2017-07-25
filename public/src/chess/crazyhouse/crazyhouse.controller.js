@@ -36,7 +36,7 @@ function CrazyhouseController(GameService, $document, MoveNavigationService, $sc
 
 	$ctrl.onDropReserve = function(){
 		console.log('droped');
-		$rootScope.$broadcast('crazyhouse:reserves:drag_stop');
+		$rootScope.$broadcast('crazyhouse:reserves:drag_stop', {piece: $ctrl.drag_piece});
 	};
 
 	$ctrl.dropHelper = function(e){

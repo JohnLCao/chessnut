@@ -5,8 +5,8 @@
 angular.module('chessnut')
 .controller('ReservesController', ReservesController);
 
-ReservesController.$inject = ['$scope'];
-function ReservesController($scope){
+ReservesController.$inject = ['$scope', '$rootScope'];
+function ReservesController($scope, $rootScope){
 	var $ctrl = this;
 	$ctrl.piece_theme = "img/chesspieces/wikipedia/";
 	$ctrl.captured_pieces = [];
@@ -23,6 +23,10 @@ function ReservesController($scope){
 		}
  		$scope.$apply();
 	});
+
+	$ctrl.dragStart = function(){
+		$rootScope.$broadcast('crazyhouse:reserves:drag_start');
+	}
 };
 
 })(); //IIFE

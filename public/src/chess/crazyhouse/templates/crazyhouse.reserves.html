@@ -1,6 +1,6 @@
 <br><br>
 
-<div  ng-drag="true" class="captured-piece pull-left" ng-repeat="piece in $ctrl.captured_pieces">
+<div ng-drag="true" ng-drag-success="$ctrl.dragStart()" class="captured-piece pull-left" ng-repeat="piece in $ctrl.captured_pieces">
 	<span class="captured-piece-counter" ng-if="$ctrl.piece_multiplicity[piece] > 1">{{$ctrl.piece_multiplicity[piece]}}</span>
 	<img src="{{$ctrl.piece_theme}}{{piece}}.png">
 </div>

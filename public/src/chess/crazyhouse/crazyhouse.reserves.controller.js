@@ -26,14 +26,16 @@ function ReservesController($scope, $rootScope){
 	});
 
 	$scope.$on('crazyhouse:reserves:drag_stop', function(event, data){
-		var piece = data.piece;
-		if($ctrl.piece_multiplicity[piece] > 1){
-			$ctrl.piece_multiplicity[piece]--;
-		}else{
-			var index = $ctrl.captured_pieces.indexOf(piece);
-			$ctrl.captured_pieces.splice(index, 1);
+		if (data.square){ //successful drop
+			var piece = data.piece;
+			if($ctrl.piece_multiplicity[piece] > 1){
+				$ctrl.piece_multiplicity[piece]--;
+			}else{
+				var index = $ctrl.captured_pieces.indexOf(piece);
+				$ctrl.captured_pieces.splice(index, 1);
+			}
+			$scope.$apply();
 		}
-		$scope.$apply();
 	})
 
 	$ctrl.dragStart = function(event){

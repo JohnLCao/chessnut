@@ -31,19 +31,35 @@ function CrazyhouseController(GameService, $document, MoveNavigationService, $sc
 		$ctrl.drag_piece = data.piece;
 	})
 
+	$ctrl.onDragOver = function(e){
+		e.preventDefault();
+	}
+
 	$ctrl.onDropReserve = function(e){
-		console.log(e.target);
-		console.log('droped a', $ctrl.drag_piece, 'on', e.target.getAttribute('data-square'));
+		var piece = $ctrl.drag_piece;
+		var square = e.target.getAttribute('data-square');
+		console.log('droped a', piece, 'on', square);
 		$rootScope.$broadcast('crazyhouse:reserves:drag_stop', {
 			piece: $ctrl.drag_piece,
 			square: e.target.getAttribute('data-square')
 		});
+		updateGame(piece, square);
 		$ctrl.drag_piece = null;
 	};
 
-	$ctrl.onDragOver = function(e){
-		e.preventDefault();
-	}
+	function updateGame(piece, square){
+		if (square) {
+			// update board
+			var pos_aftr_drop = $ctrl.board.position();
+			pos_aftr_drop[square] = piece;
+			$ctrl.board.position(pos_aftr_drop);
+			// update game
+			var turn = ($ctrl.game.turn() === 'w') ? 'b' : 'w'; //dropping takes the turn
+			GameService.pieceDropUpdate(piece, square, turn);
+			console.log(GameService.game.turn());
+			// console.log($ctrl.game.put({type: piece[1], color: piece[0]}, square));
+		}
+	};
 };
 
 })(); //IIFE

@@ -18,11 +18,14 @@ function GameService(PromotionService, $rootScope){
 	// do not pick up pieces if the game is over or viewing history
 	// only pick up pieces for the side to move
 	service.onDragStart = function(source, piece, position, orientation) {
+	  console.log(service.game.turn());
 	  if ( service.in_history ||
 	  	   service.timeOut ||
 	  	   service.game.game_over() ||
 	      (service.game.turn() === 'w' && piece.search(/^b/) !== -1) ||
 	      (service.game.turn() === 'b' && piece.search(/^w/) !== -1)) {
+	  	console.log(service.game.game_over());
+	  	console.log(service.game.turn());
 	    return false;
 	  }
 	};
@@ -101,6 +104,13 @@ function GameService(PromotionService, $rootScope){
 	service.getGame = function(){
 		return service.game;
 	};
+
+	service.pieceDropUpdate = function(piece, square, turn){
+		service.game.put({type: piece[1], color: piece[0]}, square);
+		service.game.setTurn(turn);
+		console.log(service.game.turn());
+		console.log(service.game.moves());
+	}
 
 	service.moveNavigate = function(isLeft) {
 		if (isLeft){

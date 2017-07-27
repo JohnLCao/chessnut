@@ -54,10 +54,8 @@ function CrazyhouseController(GameService, $document, MoveNavigationService, $sc
 			pos_aftr_drop[square] = piece;
 			$ctrl.board.position(pos_aftr_drop);
 			// update game
-			var turn = ($ctrl.game.turn() === 'w') ? 'b' : 'w'; //dropping takes the turn
-			GameService.pieceDropUpdate(piece, square, turn);
-			console.log(GameService.game.turn());
-			// console.log($ctrl.game.put({type: piece[1], color: piece[0]}, square));
+			// to make crazyhouse, need to patch chess.js. changing turns won't work here.
+			GameService.pieceDrop(piece, square, turn);
 		}
 	};
 };

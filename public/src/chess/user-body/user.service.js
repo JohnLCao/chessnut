@@ -13,7 +13,7 @@ function UserService($cookies, $http, ProductionBaseUrl, DevBaseUrl){
 	service.getUser = function(){
 		return $http({
 			method: 'GET',
-			url: ProductionBaseUrl + '/users/' + dummy_user_id
+			url: DevBaseUrl + '/users/' + dummy_user_id
 		})
 		.then(function(response){
 			console.log(response);

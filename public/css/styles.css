@@ -1,4 +1,25 @@
-#logo {
+/*small devices and down*/
+@media(max-width: 991px){
+	#big-logo{
+		display: none !important;
+	}
+	#small-logo{
+		display: block !important;
+		width: 50% !important;
+	}
+}
+
+/*medium devices and up*/
+@media(min-width: 992px){
+	#big-logo{
+		display: block !important;
+	}
+	#small-logo{
+		display: none !important;
+	}
+}
+
+.logo {
 	width: 85%;
 	display: block;
 	margin: auto;

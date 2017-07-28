@@ -5,8 +5,8 @@
 angular.module('chessnut')
 .service('GameService', GameService);
 
-GameService.$inject = ['PromotionService', '$rootScope'];
-function GameService(PromotionService, $rootScope){
+GameService.$inject = ['PromotionService', '$rootScope', 'EngineService'];
+function GameService(PromotionService, $rootScope, EngineService){
 	var service = this;
 	// var promotion_test_position = '8/3P3P/8/1k6/8/6K1/1p1p4/8 w - - 0 1';
 	service.game = new Chess();
@@ -71,11 +71,21 @@ function GameService(PromotionService, $rootScope){
 	  		});
 	  	}
 
+		else if (service.game.turn() === 'b'){
+			EngineService.engineMove(service.game)
+			.then(function(pos){
+				service.move_index++;
+				service.board.position(pos);
+			});
+		}
 	};
 
 	var cfg = {
 	  draggable: true,
 	  position: 'start',
+	  moveSpeed: 300,
+	  appearSpeed: 300,
+	  trashSpeed: 300,
 	  // position: promotion_test_position,
 	  onDragStart: service.onDragStart,
 	  onDrop: service.onDrop,

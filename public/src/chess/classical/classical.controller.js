@@ -9,6 +9,7 @@ ClassicalController.$inject = ['GameService', '$document', 'MoveNavigationServic
 function ClassicalController(GameService, $document, MoveNavigationService, $scope){
 	var $ctrl = this;
 	$ctrl.name = 'classical';
+	$ctrl.game_started = false;
 
 	$ctrl.initialize = function(){
 		$ctrl.game = GameService.getGame();
@@ -23,6 +24,9 @@ function ClassicalController(GameService, $document, MoveNavigationService, $sco
 	}
 	
 	$scope.$on('orientation:change_color', function(event, data){
+		if (!$ctrl.game_started){
+			GameService.player_change_side();
+		}
 		$ctrl.board.flip();
 	});
 };

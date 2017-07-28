@@ -14,15 +14,36 @@ function GameService(PromotionService, $rootScope, EngineService){
 	service.in_history = false;
 	service.move_index = -1;
 	service.timeOut = false; //only for blitz
+	service.game_on = false;
+	service.player_side = 'w'; //white by default
+
+	service.player_change_side = function(){
+		service.player_side = (service.player_side === 'w') ? 'b' : 'w'; 
+	}
+
+	service.begin = function(){
+		service.game_on = true;
+		if (service.player_side === 'b'){
+			EngineService.engineMove(service.game)
+			.then(function(pos){
+				service.move_index++;
+				service.board.position(pos);
+			});
+		}
+	}
 
 	// do not pick up pieces if the game is over or viewing history
 	// only pick up pieces for the side to move
 	service.onDragStart = function(source, piece, position, orientation) {
-	  if ( service.in_history ||
+	  if ( !service.game_on ||
+	  	   service.in_history ||
 	  	   service.timeOut ||
 	  	   service.game.game_over() ||
 	      (service.game.turn() === 'w' && piece.search(/^b/) !== -1) ||
 	      (service.game.turn() === 'b' && piece.search(/^w/) !== -1)) {
+	  	if (service.game.game_over()){
+	  		service.game_on = false;
+	  	}
 	    return false;
 	  }
 	};
@@ -66,12 +87,13 @@ function GameService(PromotionService, $rootScope, EngineService){
 	  	});
 
 	  	if (service.game.game_over()){
+	  		service.game_on = false;
 	  		$rootScope.$broadcast('game:game_over', {
 	  			winner: (service.game.turn()==='w') ? 'black' : 'white' 
 	  		});
 	  	}
 
-		else if (service.game.turn() === 'b'){
+		else if (service.game.turn() !== service.player_side){
 			EngineService.engineMove(service.game)
 			.then(function(pos){
 				service.move_index++;

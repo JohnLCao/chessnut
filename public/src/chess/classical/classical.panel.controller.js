@@ -5,11 +5,13 @@
 angular.module('chessnut')
 .controller('ClassicalPanelController', ClassicalPanelController);
 
-function ClassicalPanelController() {
+ClassicalPanelController.$inject = ['GameService'];
+function ClassicalPanelController(GameService) {
 	var $ctrl = this;
 	$ctrl.onClickPlay = function(){
-		//currently, do nothing
-		console.log('ugh, I will do something later');
+		$('.board').css('opacity', 1);
+		GameService.begin();
+		console.log('game on!');
 	}
 };	
 

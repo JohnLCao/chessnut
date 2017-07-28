@@ -92,22 +92,25 @@ function GameService(PromotionService, $rootScope, EngineService){
 	  			winner: (service.game.turn()==='w') ? 'black' : 'white' 
 	  		});
 	  	}
+	  	else if(service.game.turn()!== service.player_side){
+	  		$rootScope.$broadcast('game:engine_move');
+	 	}
+	};
 
-		else if (service.game.turn() !== service.player_side){
+	$rootScope.$on('game:engine_move', function(event, data){
+		setTimeout(function(){
 			EngineService.engineMove(service.game)
 			.then(function(pos){
 				service.move_index++;
 				service.board.position(pos);
 			});
-		}
-	};
+		}, 500); //give time for chessboardjs to process player move changes in GUI
+	});
 
 	var cfg = {
 	  draggable: true,
 	  position: 'start',
 	  moveSpeed: 300,
-	  appearSpeed: 300,
-	  trashSpeed: 300,
 	  // position: promotion_test_position,
 	  onDragStart: service.onDragStart,
 	  onDrop: service.onDrop,

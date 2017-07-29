@@ -87,6 +87,7 @@ function PromotionService($rootScope){
  			captured: move.captured,
  			color: move.color
  		});
+ 		$rootScope.$broadcast('game:engine_move');
 	};
 
 	function getImgSrc(piece, color) {

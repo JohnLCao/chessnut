@@ -28,9 +28,6 @@ function GameService(PromotionService, $rootScope, EngineService){
 
 	service.begin = function(){
 		service.game_on = true;
-		if (service.player_side === 'b'){
-			$rootScope.$broadcast('game:engine_move');
-		}
 	}
 
 	// do not pick up pieces if the game is over or viewing history
@@ -40,6 +37,7 @@ function GameService(PromotionService, $rootScope, EngineService){
 	  	   service.in_history ||
 	  	   service.timeOut ||
 	  	   service.game.game_over() ||
+	  	   service.game.turn()!== service.player_side ||
 	      (service.game.turn() === 'w' && piece.search(/^b/) !== -1) ||
 	      (service.game.turn() === 'b' && piece.search(/^w/) !== -1)) {
 	  	if (service.game.game_over()){
@@ -111,6 +109,12 @@ function GameService(PromotionService, $rootScope, EngineService){
 				});
 			}
 		}, 500); //give time for chessboardjs to process player move changes in GUI
+	});
+
+	$rootScope.$on('engine_difficulty:set', function(event, data){
+		if (service.player_side === 'b'){
+			$rootScope.$broadcast('game:engine_move');
+		}
 	});
 
 	var cfg = {

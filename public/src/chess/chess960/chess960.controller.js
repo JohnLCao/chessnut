@@ -10,7 +10,7 @@ function Chess960Controller(GameService, $document, MoveNavigationService, $scop
 	var $ctrl = this;
 	$ctrl.name = 'chess960';
 
-	$ctrl.initBoard = function(event, data){
+	$ctrl.initBoard = function(){
 		var pos = generate960Position();
 		var game_fen = pos + "/pppppppp/8/8/8/8/PPPPPPPP/" + pos.toUpperCase() + " w - - 0 1"
 		$ctrl.board = GameService.makeBoard($ctrl.name, game_fen);
@@ -19,6 +19,7 @@ function Chess960Controller(GameService, $document, MoveNavigationService, $scop
 	$ctrl.initialize = function(){
 		$ctrl.initBoard();
 		$(document).on('keyup', MoveNavigationService.moveListener);
+		GameService.game_on = false;
 	}
 
 	$document.ready($ctrl.initialize);
@@ -27,9 +28,16 @@ function Chess960Controller(GameService, $document, MoveNavigationService, $scop
 		$(document).off();
 	}
 
-	$scope.$on('chess960:new_board', $ctrl.initBoard);
+	$scope.$on('chess960:new_board', function(event, data){
+		if (!GameService.game_on){
+			$ctrl.initBoard();
+		}
+	});
 
 	$scope.$on('orientation:change_color', function(event, data){
+		if (!GameService.game_on){
+			GameService.player_change_side();
+		}
 		$ctrl.board.flip();
 	});
 

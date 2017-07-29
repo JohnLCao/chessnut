@@ -10,12 +10,12 @@ function BlitzController(GameService, $document, MoveNavigationService, $scope){
 	var $ctrl = this;
 	$ctrl.name = 'blitz';
 	$ctrl.timeOut = false;
-	$ctrl.game_started = false;
 
 	$ctrl.initialize = function(){
 		$ctrl.game = GameService.getGame();
 		$ctrl.board = GameService.makeBoard($ctrl.name);
 		$(document).on('keyup', MoveNavigationService.moveListener);
+		GameService.game_on = false;
 	};
 
 	$document.ready($ctrl.initialize);
@@ -25,7 +25,7 @@ function BlitzController(GameService, $document, MoveNavigationService, $scope){
 	};
 
 	$scope.$on('orientation:change_color', function(event, data){
-		if (!$ctrl.game_started){
+		if (!GameService.game_on){
 			GameService.player_change_side();
 		}
 		$ctrl.board.flip();

@@ -370,3 +370,8 @@ header {
   top: 0;
   right: 0;
 }
+
+.modal-dialog {
+	position: relative;
+	top: 250px;
+}

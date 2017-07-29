@@ -373,5 +373,30 @@ header {
 
 .modal-dialog {
 	position: relative;
-	top: 250px;
+	top: 200px;
+}
+
+.modal-dialog img {
+	width: 90px;
+	margin: 10px 10px 10px 10px;
+}
+
+.modal-dialog img:hover{
+	cursor: pointer;
+	animation: spin 1.25s ease 1;
+
+}
+
+.level{
+	font-size: 30px;
+	font-weight: bold;
+	font-family: 'Heebo', sans-serif;
+	margin-left: 7px;
+	margin-right: 7px;
+}
+
+.level:hover{
+	cursor: pointer;
+	font-size: 32px;
+	color: gold;
 }

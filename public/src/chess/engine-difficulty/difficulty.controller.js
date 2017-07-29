@@ -3,7 +3,7 @@
 'use strict';
 
 angular.module('chessnut')
-.controller('DiffucultyController', DifficultyController);
+.controller('DifficultyController', DifficultyController);
 
 DifficultyController.$inject = ['GameService'];
 function DifficultyController(GameService){

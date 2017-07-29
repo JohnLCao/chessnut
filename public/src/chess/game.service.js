@@ -16,6 +16,7 @@ function GameService(PromotionService, $rootScope, EngineService){
 	service.timeOut = false; //only for blitz
 	service.game_on = false;
 	service.player_side = 'w'; //white by default
+	service.engineDifficulty = 0; //noob by default
 
 	service.player_change_side = function(){
 		service.player_side = (service.player_side === 'w') ? 'b' : 'w'; 
@@ -24,11 +25,7 @@ function GameService(PromotionService, $rootScope, EngineService){
 	service.begin = function(){
 		service.game_on = true;
 		if (service.player_side === 'b'){
-			EngineService.engineMove(service.game)
-			.then(function(pos){
-				service.move_index++;
-				service.board.position(pos);
-			});
+			$rootScope.$broadcast('game:engine_move');
 		}
 	}
 
@@ -100,7 +97,7 @@ function GameService(PromotionService, $rootScope, EngineService){
 	$rootScope.$on('game:engine_move', function(event, data){
 		setTimeout(function(){
 			if (!service.timeOut){ //for the rare occasion that engine timesout in blitz
-				EngineService.engineMove(service.game, 0)
+				EngineService.engineMove(service.game, service.engineDifficulty)
 				.then(function(pos){
 					service.move_index++;
 					service.board.position(pos);

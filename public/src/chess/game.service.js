@@ -18,6 +18,10 @@ function GameService(PromotionService, $rootScope, EngineService){
 	service.player_side = 'w'; //white by default
 	service.engineDifficulty = 0; //noob by default
 
+	service.setLevel = function(level){
+		service.engineDifficulty = level;
+	}
+
 	service.player_change_side = function(){
 		service.player_side = (service.player_side === 'w') ? 'b' : 'w'; 
 	}

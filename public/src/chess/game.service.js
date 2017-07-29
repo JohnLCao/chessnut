@@ -99,11 +99,16 @@ function GameService(PromotionService, $rootScope, EngineService){
 
 	$rootScope.$on('game:engine_move', function(event, data){
 		setTimeout(function(){
-			EngineService.engineMove(service.game)
-			.then(function(pos){
-				service.move_index++;
-				service.board.position(pos);
-			});
+			if (!service.timeOut){ //for the rare occasion that engine timesout in blitz
+				EngineService.engineMove(service.game)
+				.then(function(pos){
+					service.move_index++;
+					service.board.position(pos);
+					$rootScope.$broadcast('game:moving_side', {
+		  				color: service.game.turn()
+		  			});
+				});
+			}
 		}, 500); //give time for chessboardjs to process player move changes in GUI
 	});
 

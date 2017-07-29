@@ -5,11 +5,13 @@
 angular.module('chessnut')
 .controller('BlitzPanelController', BlitzPanelController);
 
-function BlitzPanelController(){
+BlitzPanelController.$inject = ['GameService'];
+function BlitzPanelController(GameService){
 	var $ctrl = this;
 	$ctrl.onClickPlay = function(){
-		//nothing yet
-		console.log('John will implement me later :)');
+		$('.board').css('opacity', 1);
+		GameService.begin();
+		console.log('game on!');
 	}
 }
 

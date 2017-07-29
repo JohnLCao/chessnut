@@ -15,6 +15,7 @@ function CrazyhouseController(GameService, $document, MoveNavigationService, $sc
 		$ctrl.game = GameService.getGame();
 		$ctrl.board = GameService.makeBoard($ctrl.name);
 		$(document).on('keyup', MoveNavigationService.moveListener);
+		GameService.game_on = false;
 	};
 
 	$document.ready($ctrl.initialize);
@@ -24,6 +25,9 @@ function CrazyhouseController(GameService, $document, MoveNavigationService, $sc
 	}
 
 	$scope.$on('orientation:change_color', function(event, data){
+		if (!GameService.game_on){
+			GameService.player_change_side();
+		}
 		$ctrl.board.flip();
 	});
 

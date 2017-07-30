@@ -5,8 +5,8 @@
 angular.module('chessnut')
 .controller('BlitzController', BlitzController);
 
-BlitzController.$inject = ['GameService', '$document', 'MoveNavigationService', '$scope']
-function BlitzController(GameService, $document, MoveNavigationService, $scope){
+BlitzController.$inject = ['GameService', '$document', 'MoveNavigationService', '$scope', '$rootScope']
+function BlitzController(GameService, $document, MoveNavigationService, $scope, $rootScope){
 	var $ctrl = this;
 	$ctrl.name = 'blitz';
 	$ctrl.timeOut = false;
@@ -33,6 +33,14 @@ function BlitzController(GameService, $document, MoveNavigationService, $scope){
 
 	$scope.$on('chessclock:timeout', function(event, data){
 		GameService.timeOut = true;
+		$rootScope.$broadcast('game:game_over', {
+			winner: data.winner
+		})
+	});
+
+	$scope.$on('game:game_over', function(event, data){
+		$('.board').css('opacity', 0.7);
+		console.log(data.winner);
 	});
 };
 

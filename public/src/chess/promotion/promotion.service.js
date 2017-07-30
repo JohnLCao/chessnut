@@ -83,10 +83,18 @@ function PromotionService($rootScope){
 	function onDialogClose(){
 		promotion.move_cfg.promotion = promotion.promote_to;
 		var move = promotion.game.move(promotion.move_cfg);
-		$rootScope.$broadcast('game:capture', {
- 			captured: move.captured,
- 			color: move.color
- 		});
+		if (move.flags.includes('c') || move.flags.includes('e')){ //a capture
+			$rootScope.$broadcast('game:capture', {
+	 			captured: move.captured,
+	 			color: move.color
+	 		});
+		}
+
+		if(promotion.game.game_over()){
+			$rootScope.$broadcast('game:game_over', {
+				winner: (promotion.game.turn()==='w') ? 'black' : 'white'
+			})
+		}
  		$rootScope.$broadcast('game:engine_move');
 	};
 

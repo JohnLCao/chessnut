@@ -106,6 +106,11 @@ function GameService(PromotionService, $rootScope, EngineService){
 					$rootScope.$broadcast('game:moving_side', {
 		  				color: service.game.turn()
 		  			});
+		  			if(service.game.game_over()){
+		  				$rootScope.$broadcast('game:game_over', {
+		  					winner: (service.game.turn()==='w') ? 'black' : 'white'
+		  				})
+		  			}
 				});
 			}
 		}, 500); //give time for chessboardjs to process player move changes in GUI

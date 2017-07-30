@@ -8,7 +8,7 @@ angular.module('chessnut')
 ChessClockController.$inject = ['$interval', '$scope', '$rootScope'];
 function ChessClockController($interval, $scope, $rootScope){
 	var $ctrl = this;
-	var initialTime = 3000;
+	var initialTime = 500;
 	var whiteTime = initialTime;
 	var blackTime = initialTime;
 	$ctrl.formatTime = function(tenths){
@@ -42,7 +42,7 @@ function ChessClockController($interval, $scope, $rootScope){
 	});
 
 	$scope.$on('game:game_over', function(event, data){
-		$ctrl.endClock();
+		$ctrl.endClock(data.winner);
 	});
 
 	$ctrl.chessclock = $interval(function(){
@@ -61,14 +61,16 @@ function ChessClockController($interval, $scope, $rootScope){
 			}
 
 			if (whiteTime === 0 || blackTime === 0){
-				$ctrl.endClock(true);
+				$ctrl.endClock(
+					((whiteTime > 0) ? 'white' : 'black'), true
+				);
 			}
 		}
 	}, 100);
 
-	$ctrl.endClock = function(timeOut=false){
+	$ctrl.endClock = function(winner, timeOut=false){
 		if (timeOut){
-			$rootScope.$broadcast('chessclock:timeout');
+			$rootScope.$broadcast('chessclock:timeout', {winner: winner});
 		}
 		$interval.cancel($ctrl.chessclock);
 		$ctrl.movingSideColor = 'gold'; //blitz game is over, display gold line between player's times

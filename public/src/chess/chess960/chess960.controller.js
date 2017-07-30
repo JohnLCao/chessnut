@@ -41,6 +41,11 @@ function Chess960Controller(GameService, $document, MoveNavigationService, $scop
 		$ctrl.board.flip();
 	});
 
+	$scope.$on('game:game_over', function(event, data){
+		$('.board').css('opacity', 0.7);
+		console.log(data.winner);
+	});
+
 	function generate960Position(){ 
 		// console.log('generated random position!');
 		var dark_bishop, light_bishop, queen, knight1, knight2;

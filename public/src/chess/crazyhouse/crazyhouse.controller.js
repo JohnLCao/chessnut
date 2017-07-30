@@ -33,7 +33,12 @@ function CrazyhouseController(GameService, $document, MoveNavigationService, $sc
 
 	$scope.$on('crazyhouse:reserves:drag_start', function(event, data){
 		$ctrl.drag_piece = data.piece;
-	})
+	});
+
+	$scope.$on('game:game_over', function(event, data){
+		$('.board').css('opacity', 0.7);
+		console.log(data.winner);
+	});
 
 	$ctrl.onDragOver = function(e){
 		e.preventDefault();

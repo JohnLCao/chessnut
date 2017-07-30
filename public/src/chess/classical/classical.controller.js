@@ -29,6 +29,11 @@ function ClassicalController(GameService, $document, MoveNavigationService, $sco
 		}
 		$ctrl.board.flip();
 	});
+
+	$scope.$on('game:game_over', function(event, data){
+		$('.board').css('opacity', 0.7);
+		console.log(data.winner);
+	})
 };
 
 })()//IIFE

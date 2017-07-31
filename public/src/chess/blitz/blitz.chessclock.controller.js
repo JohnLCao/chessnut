@@ -8,7 +8,7 @@ angular.module('chessnut')
 ChessClockController.$inject = ['$interval', '$scope', '$rootScope'];
 function ChessClockController($interval, $scope, $rootScope){
 	var $ctrl = this;
-	var initialTime = 500;
+	var initialTime = 3000;
 	var whiteTime = initialTime;
 	var blackTime = initialTime;
 	$ctrl.formatTime = function(tenths){

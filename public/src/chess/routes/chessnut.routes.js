@@ -50,6 +50,10 @@ function RouteConfig($stateProvider, $urlRouterProvider){
 			url: '/profile',
 			templateUrl: 'src/chess/routes/templates/profile.html'
 		})
+		.state('user-games', {
+			url: '/games',
+			templateUrl: 'src/chess/routes/templates/games.html'
+		})
 };
 
 })(); //IIFE

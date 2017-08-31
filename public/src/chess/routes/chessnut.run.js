@@ -22,7 +22,7 @@ function RunFunc($rootScope, SigninService, $transitions, $cookies){
 		// console.log(state);
 		var protected_states = [
 		'classical','blitz','chess960','crazyhouse','app-description','john-description',
-		'acknowledgements','user-profile'
+		'acknowledgements','user-profile', 'user-games'
 		];
 
 		return protected_states.includes(state.name);

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :is_admin?, only: [:index]
+  before_action :ensure_admin, only: [:index]
   skip_before_action :verify_authenticity_token, only: [:create]
   skip_before_action :ensure_login, only: [:create]
 

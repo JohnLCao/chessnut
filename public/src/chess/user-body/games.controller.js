@@ -8,7 +8,16 @@ angular.module('chessnut')
 UserGamesController.$inject = ['UserService'];
 function UserGamesController(UserService){
 	var $ctrl = this;
-	$ctrl.user = null;
+	$ctrl.games = null;
+
+	$ctrl.getGames = function(){
+		UserService.getGames().
+		then(function(response){
+			$ctrl.games = service.games;
+		});
+	};
+
+	$ctrl.$onInit = $ctrl.getGames;
 }
 
 })(); //IIFE

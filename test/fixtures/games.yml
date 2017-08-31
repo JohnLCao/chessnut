@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  difficulty: 1
+  pgn: MyString
+  result: MyString
+  date: 2017-08-31
+
+two:
+  difficulty: 1
+  pgn: MyString
+  result: MyString
+  date: 2017-08-31

@@ -39,6 +39,22 @@ function UserService($cookies, $http, ProductionBaseUrl, DevBaseUrl){
 			console.warn(error);
 		});
 	};
+
+	service.storeGame = function(game){
+		return $http({
+			method: 'POST',
+			url: DevBaseUrl + '/games',
+			data:{
+				game: game
+			}
+		})
+		.then(function(response){
+			console.log(response);
+		})
+		.catch(function(error){
+			console.warn(error);
+		})
+	};
 };
 
 })(); //IIFE

@@ -5,8 +5,8 @@
 angular.module('chessnut')
 .service('GameService', GameService);
 
-GameService.$inject = ['PromotionService', '$rootScope', 'EngineService'];
-function GameService(PromotionService, $rootScope, EngineService){
+GameService.$inject = ['PromotionService', '$rootScope', 'EngineService', 'UserService'];
+function GameService(PromotionService, $rootScope, EngineService, UserService){
 	var service = this;
 	// var promotion_test_position = '8/3P3P/8/1k6/8/6K1/1p1p4/8 w - - 0 1';
 	service.game = new Chess();
@@ -90,6 +90,7 @@ function GameService(PromotionService, $rootScope, EngineService){
 	  		$rootScope.$broadcast('game:game_over', {
 	  			winner: (service.game.turn()==='w') ? 'black' : 'white' 
 	  		});
+	  		service.storeGame();
 	  	}
 	  	else if(service.game.turn()!== service.player_side){
 	  		$rootScope.$broadcast('game:engine_move');
@@ -109,7 +110,8 @@ function GameService(PromotionService, $rootScope, EngineService){
 		  			if(service.game.game_over()){
 		  				$rootScope.$broadcast('game:game_over', {
 		  					winner: (service.game.turn()==='w') ? 'black' : 'white'
-		  				})
+		  				});
+					  	service.storeGame();
 		  			}
 				});
 			}
@@ -151,6 +153,15 @@ function GameService(PromotionService, $rootScope, EngineService){
 	service.getGame = function(){
 		return service.game;
 	};
+
+	service.storeGame = function(){
+	  	UserService.storeGame({
+			difficulty: service.engineDifficulty,
+			pgn: service.game.pgn(),
+			result: service.game.in_draw() ? 'draw' : (service.game.turn()===service.player_side ? 'lost' : 'won'),
+			date: new Date().toString()
+		});
+	}
 
 	service.pieceDrop = function(piece, square, turn){
 		// service.game.setTurn(turn);

@@ -4,7 +4,7 @@ class CreateGames < ActiveRecord::Migration
       t.integer :difficulty
       t.string :pgn
       t.string :result
-      t.date :date
+      t.string :date
 
       t.timestamps null: false
     end

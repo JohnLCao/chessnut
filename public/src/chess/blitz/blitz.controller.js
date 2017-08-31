@@ -35,7 +35,8 @@ function BlitzController(GameService, $document, MoveNavigationService, $scope, 
 		GameService.timeOut = true;
 		$rootScope.$broadcast('game:game_over', {
 			winner: data.winner
-		})
+		});
+		GameService.storeGame();
 	});
 
 	$scope.$on('game:game_over', function(event, data){

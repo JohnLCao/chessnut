@@ -5,8 +5,8 @@
 angular.module('chessnut')
 .service('PromotionService', PromotionService);
 
-PromotionService.$inject = ['$rootScope']
-function PromotionService($rootScope){
+PromotionService.$inject = ['$rootScope', 'GameService']
+function PromotionService($rootScope, GameService){
 	var promotion = this;
 	promotion.promote_to = 'q'; //default queen promotion
 
@@ -94,6 +94,7 @@ function PromotionService($rootScope){
 			$rootScope.$broadcast('game:game_over', {
 				winner: (promotion.game.turn()==='w') ? 'black' : 'white'
 			})
+			GameService.storeGame();
 		}
  		$rootScope.$broadcast('game:engine_move');
 	};

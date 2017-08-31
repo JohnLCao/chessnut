@@ -29,7 +29,7 @@ function UserService($cookies, $http, ProductionBaseUrl, DevBaseUrl){
 	service.getGames = function(){
 		return $http({
 			method: 'GET',
-			url: DevBaseUrl + // server side work...
+			url: DevBaseUrl + '/games' //current user stored on server side
 		})
 		.then(function(response){
 			console.log(response);

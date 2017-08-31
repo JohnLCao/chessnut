@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:new, :create, :destroy]
 
+  get '/games' => 'games#index'
+
   # get '/login'=>'sessions#new', as: :login
   # get '/logout'=>'sessions#destroy', as: :logout
   get '*path'=>'application#main_page'

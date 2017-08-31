@@ -124,6 +124,10 @@ function GameService(PromotionService, $rootScope, EngineService, UserService){
 		}
 	});
 
+	$rootScope.$on('game:store_game', function(event, data){
+		service.storeGame();
+	})
+
 	var cfg = {
 	  draggable: true,
 	  position: 'start',

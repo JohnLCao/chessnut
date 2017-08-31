@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  	skip_before_action :verify_authenticity_token, only: [:create]
+
 	# GET /games
 	def index
 		@games = Game.where({user_id: current_user.id}).all
@@ -12,7 +14,7 @@ class GamesController < ApplicationController
 		respond_to do |format|
 	      if @game.save
 	        format.html { redirect_to @game, notice: 'User was successfully created.' }
-	        format.json { render json: @game.to_json, status: :created, location: @game }
+	        format.json { render json: @game.to_json, status: :created}
 	      else
 	        format.html { render :new }
 	        format.json { render json: @game.errors, status: :unprocessable_entity }

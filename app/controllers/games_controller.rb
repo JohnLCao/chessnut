@@ -25,6 +25,6 @@ class GamesController < ApplicationController
 
 	private
 		def game_params
-			params.require(:game).permit(:difficulty, :pgn, :result, :date)
+			params.require(:game).permit(:difficulty, :pgn, :result, :date, :player_side)
 		end
 end

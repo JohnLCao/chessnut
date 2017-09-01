@@ -21,8 +21,9 @@ ActiveRecord::Schema.define(version: 20170831195229) do
     t.string   "pgn"
     t.string   "result"
     t.string   "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "player_side"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
   end
 

@@ -5,6 +5,7 @@ class CreateGames < ActiveRecord::Migration
       t.string :pgn
       t.string :result
       t.string :date
+      t.string :player_side
 
       t.timestamps null: false
     end

@@ -22,7 +22,7 @@ function UserGamesController(UserService, GameService, $timeout){
 	$ctrl.setGames = function(){
 		console.log($ctrl.games);
 		$ctrl.games.forEach(function(game){
-			GameService.makeBoard(game.date, null, game.pgn);
+			GameService.makeHistoryBoard(game.date, game.pgn, game.player_side);
 		});
 	}
 }

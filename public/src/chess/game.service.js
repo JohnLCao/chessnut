@@ -138,14 +138,10 @@ function GameService(PromotionService, $rootScope, EngineService, UserService){
 	  onSnapEnd: service.onSnapEnd
 	};
 
-	service.makeBoard = function(board_id, custom_fen = null, custom_pgn=null){		
+	service.makeBoard = function(board_id, custom_fen = null){		
 		if (custom_fen){
 			service.game = new Chess(custom_fen);
 			cfg.position = custom_fen;
-		} else if(custom_pgn){
-			service.game = new Chess();
-			service.game.load_pgn(custom_pgn);
-			cfg.position = service.game.fen();
 		} else {
 			service.game = new Chess();
 			cfg.position = 'start';
@@ -158,6 +154,22 @@ function GameService(PromotionService, $rootScope, EngineService, UserService){
 		return service.board;
 	}
 
+	service.makeHistoryBoard = function(board_id, custom_pgn, player_side){
+		if(custom_pgn){
+			service.game = new Chess();
+			service.game.load_pgn(custom_pgn);
+			cfg.position = service.game.fen();
+		}
+		if (player_side){
+			cfg.orientation = player_side;
+		}
+		service.board = ChessBoard(board_id, cfg);
+		service.timeOut = false;
+		service.move_index = service.game.history().length-1;
+		service.promoting = false;
+		service.in_history = true;
+	}
+
 	service.getGame = function(){
 		return service.game;
 	};
@@ -167,7 +179,8 @@ function GameService(PromotionService, $rootScope, EngineService, UserService){
 			difficulty: service.engineDifficulty,
 			pgn: service.game.pgn(),
 			result: service.game.in_draw() ? 'draw' : (service.game.turn()===service.player_side ? 'lost' : 'won'),
-			date: new Date().toString()
+			date: new Date().toString(),
+			player_side: service.player_side === 'w' ? 'white' : 'black'
 		});
 	}
 

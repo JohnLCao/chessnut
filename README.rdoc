@@ -2,7 +2,7 @@
 
 Have fun and play some chess variants!
  
-This web app is currently hosted at chessnutio.herokuapp.com
+This web app is currently hosted at {chessnut on heroku}[https://chessnutio.herokuapp.com/#!/login]
 
 Things used: 
   Ruby on Rails 4.2.8

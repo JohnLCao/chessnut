@@ -1,1 +1,10 @@
-<div>Hello!!!!</div>
+<!-- user some other gif since pacman gif doesn' work well with orange background -->
+<div class="pacman" style="display:none;"><img src="img/white-pacman.gif"></div>
+
+<div ng-repeat="game in $ctrl.games">
+	<h3>Level: {{game.difficulty}}</h3> 
+	<h3>Result: {{game.result}}</h3>
+	<h3>Date: {{game.date}}</h3>
+	<div id="{{game.date}}" class="board_history responsive"></div>
+	<hr>
+</div>

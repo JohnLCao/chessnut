@@ -4,6 +4,7 @@ class GamesController < ApplicationController
 	# GET /games
 	def index
 		@games = Game.where({user_id: current_user.id}).all
+		render json: @games
 	end
 
 	# POST /games

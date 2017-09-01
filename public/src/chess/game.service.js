@@ -138,10 +138,14 @@ function GameService(PromotionService, $rootScope, EngineService, UserService){
 	  onSnapEnd: service.onSnapEnd
 	};
 
-	service.makeBoard = function(board_id, custom_fen = null){		
+	service.makeBoard = function(board_id, custom_fen = null, custom_pgn=null){		
 		if (custom_fen){
 			service.game = new Chess(custom_fen);
 			cfg.position = custom_fen;
+		} else if(custom_pgn){
+			service.game = new Chess();
+			service.game.load_pgn(custom_pgn);
+			cfg.position = service.game.fen();
 		} else {
 			service.game = new Chess();
 			cfg.position = 'start';

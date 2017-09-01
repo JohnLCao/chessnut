@@ -43,7 +43,7 @@ function UserService($cookies, $http, ProductionBaseUrl, DevBaseUrl){
 	service.storeGame = function(game){
 		return $http({
 			method: 'POST',
-			url: DevBaseUrl + '/games',
+			url: DevBaseUrl + '/games.json',
 			data:{
 				game: game
 			}

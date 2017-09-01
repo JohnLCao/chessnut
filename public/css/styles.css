@@ -77,6 +77,13 @@ about, user {
 	opacity: 0.7;
 }
 
+.board_history {
+	width: 60%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 40px;
+}
+
 body {
 	position: relative;
 	background: #D2691E;

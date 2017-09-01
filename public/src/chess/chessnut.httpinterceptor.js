@@ -7,10 +7,11 @@ angular.module('chessnut')
 
 HttpInterceptorConfig.$inject = ['$httpProvider', '$provide'];
 function HttpInterceptorConfig($httpProvider, $provide){	
-	$provide.factory('PacmanInterceptor', ['$q', function($q){
+	$provide.factory('PacmanInterceptor', ['$q', '$rootScope', function($q, $rootScope){
 		return {
 			'response': function(response){
 				$('.pacman').hide();
+				$rootScope.$broadcast('http:data_retrieved');
 				return response;
 			}, 
 

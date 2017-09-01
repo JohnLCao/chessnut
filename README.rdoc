@@ -1,14 +1,6 @@
 == README
 
-Have fun and play some 
-      _                   
-     | |                  
-  ___| |__   ___  ___ ___ 
- / __| '_ \ / _ \/ __/ __|
-| (__| | | |  __/\__ \__ \
- \___|_| |_|\___||___/___/
- 
- ..variants.
+Have fun and play some chess variants!
  
 This web app is currently hosted at chessnutio.herokuapp.com
 

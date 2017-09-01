@@ -15,7 +15,7 @@ function UserService($cookies, $http, ProductionBaseUrl, DevBaseUrl){
 	service.getUser = function(){
 		return $http({
 			method: 'GET',
-			url: DevBaseUrl + '/users/' + dummy_user_id
+			url: ProductionBaseUrl + '/users/' + dummy_user_id
 		})
 		.then(function(response){
 			console.log(response);
@@ -29,7 +29,7 @@ function UserService($cookies, $http, ProductionBaseUrl, DevBaseUrl){
 	service.getGames = function(){
 		return $http({
 			method: 'GET',
-			url: DevBaseUrl + '/games' //current user stored on server side
+			url: ProductionBaseUrl + '/games' //current user stored on server side
 		})
 		.then(function(response){
 			console.log(response);
@@ -43,7 +43,7 @@ function UserService($cookies, $http, ProductionBaseUrl, DevBaseUrl){
 	service.storeGame = function(game){
 		return $http({
 			method: 'POST',
-			url: DevBaseUrl + '/games.json',
+			url: ProductionBaseUrl + '/games.json',
 			data:{
 				game: game
 			}

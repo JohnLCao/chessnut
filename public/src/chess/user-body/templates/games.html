@@ -5,6 +5,12 @@
 	<h3>Level: {{game.difficulty}}</h3> 
 	<h3>Result: {{game.result}}</h3>
 	<h3>Date: {{game.date}}</h3>
-	<div id="{{game.date}}" class="board_history responsive"></div>
+	<button 
+		ng-click="$ctrl.switchFocus(game)" 
+		class="panel-button" 
+		style="width:110px; height: 45px; margin: 0 0 0 0; left: 0px">
+		REVIEW
+	</button>
+	<div id="{{game.no_space_date}}" class="board_history responsive"></div>
 	<hr>
 </div>

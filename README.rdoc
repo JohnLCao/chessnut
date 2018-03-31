@@ -7,12 +7,17 @@ new pieces, time restrictions, move modifications, and more. Examples of Chess v
 ===Chessnut 
 {Chessnut}[https://chessnutio.herokuapp.com/#!/login] currently fully supports the classical variation of Chess, {Chess 960}[https://en.wikipedia.org/wiki/Chess960], and {Blitz Chess}[https://en.wikipedia.org/wiki/Fast_chess]. Chessnut partially supports {Crazyhouse}[https://en.wikipedia.org/wiki/Crazyhouse], and is looking to fully implement it together with other variations in the future. 
 
-Things used: 
+===Dependencies  
+====Backend
   Ruby on Rails 4.2.8
-  AngularJS 1.6.4 
   PostgreSQL 9.6.3 
+
+====Frontend
+  AngularJS 1.6.4 
   Bootstrap 3.3.7
   jQuery 3.2.1
+
+====Chess UI and Logic
   chess.js (https://github.com/jhlywa/chess.js/blob/master/README.md)
   chessboard.js v0.3.0
   cinnamon chess engine (http://cinnamonchess.altervista.org)

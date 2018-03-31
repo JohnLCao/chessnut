@@ -6,6 +6,11 @@ new pieces, time restrictions, move modifications, and more. Examples of Chess v
 
 ===Chessnut 
 {Chessnut}[https://chessnutio.herokuapp.com/#!/login] currently fully supports the classical variation of Chess, {Chess 960}[https://en.wikipedia.org/wiki/Chess960], and {Blitz Chess}[https://en.wikipedia.org/wiki/Fast_chess]. Chessnut partially supports {Crazyhouse}[https://en.wikipedia.org/wiki/Crazyhouse], and is looking to fully implement it together with other variations in the future. 
+====Classical
+The classical variation of Chess is known as the Royal Game and often seen as the ultimate intellectual sport. Classical Chess has been likened to art, science, and a good fight. 
+
+The game offers vast possibilities over the board, and as seen champions with diverse styles. Chess is rightfully so described by Grand Master Walter Browne as a "natural cerebral high".
+
 
 ===Audience
 Chessnut is an open application and welcomes anyone to visit and play. Players of all skill levels are welcome to try out the games offered, 

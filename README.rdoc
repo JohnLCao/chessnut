@@ -11,6 +11,10 @@ The classical variation of Chess is known as the Royal Game and often seen as th
 
 The game offers vast possibilities over the board, and as seen champions with diverse styles. Chess is rightfully so described by Grand Master Walter Browne as a "natural cerebral high".
 
+====Chess960
+Chess960 was invented by Chess world champion Bobby Fischer, and reflects his dislike for opening theory. The game derives the "960" part of its name from the fact that there are 960 possible permutations for that starting position.
+
+Chess960 is not a complete random shuffle of the pieces but obeys certain restrictions that preserve characteristics of the classical variabtion of the game. For example, bishops remain on opposite color squres. A game of Chess960 is nearly always a thrill!
 
 ===Audience
 Chessnut is an open application and welcomes anyone to visit and play. Players of all skill levels are welcome to try out the games offered, 

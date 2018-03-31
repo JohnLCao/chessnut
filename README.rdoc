@@ -16,6 +16,11 @@ Chess960 was invented by Chess world champion Bobby Fischer, and reflects his di
 
 Chess960 is not a complete random shuffle of the pieces but obeys certain restrictions that preserve characteristics of the classical variabtion of the game. For example, bishops remain on opposite color squres. A game of Chess960 is nearly always a thrill!
 
+====Crazyhouse
+Crazyhouse Chess has many fun synonyms, such as mad chess and schizochess. In Crazyhouse, when you have captured an opponent piece, you gain that piece in your reserves and can spend a move putting a reserved piece onto the board.
+
+Crazyhouse incorporates this "capture and drop" rule from the Japanese game Shogi. Unlike Shogi. The presence of this rule changes the strategy of the game dramatically!
+
 ===Audience
 Chessnut is an open application and welcomes anyone to visit and play. Players of all skill levels are welcome to try out the games offered, 
 and improve at the game. Players will need to register with their email and be asked to create a password, but no other information is required.

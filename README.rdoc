@@ -16,6 +16,9 @@ Chess960 was invented by Chess world champion Bobby Fischer, and reflects his di
 
 Chess960 is not a complete random shuffle of the pieces but obeys certain restrictions that preserve characteristics of the classical variabtion of the game. For example, bishops remain on opposite color squres. A game of Chess960 is nearly always a thrill!
 
+====Blitz
+Blitz Chess is extremely popular due to the time factor adding excitement to the game. Rather than following known theory in openings, Blitz Chess often involves daring gambles and is an emotional rollercoaster for the players. Think fast!
+
 ===Audience
 Chessnut is an open application and welcomes anyone to visit and play. Players of all skill levels are welcome to try out the games offered, 
 and improve at the game. Players will need to register with their email and be asked to create a password, but no other information is required.
